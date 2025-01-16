@@ -22,7 +22,7 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "homepage": "https://andyzhu23.github.io/me",
+  "homepage": "https://andyzhu23.github.io/andyzhu23.github.io",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
