@@ -3,6 +3,8 @@
 const Home: React.FC = () => {
     return (
         <>
+        <h1 style={{ textAlign: "center" }}>Contact</h1>
+        <hr></hr>
         <ul style={{ textAlign: "center" }}>
             <span>
                 <a href="andy.zheyuan.zhu@gmail.com" style={{color: "lightskyblue"}}>Email</a>

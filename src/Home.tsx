@@ -1,4 +1,4 @@
-
+import Contact from './Contact'
 
 const Home: React.FC = () => {
     return (
@@ -6,6 +6,7 @@ const Home: React.FC = () => {
             <p style={{ textAlign: "center" }}>
                 Hello, Welcome to Andy's personal website. I am an undergrad at University of Cambridge studying the Computer Science Tripos.
             </p>
+            <Contact/>
         </>
     );
 };
