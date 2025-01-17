@@ -4,13 +4,11 @@ import "./index.css"
 const Header: React.FC = () => {
 
     return (
-        <header>
+        <header style={{ textAlign: "center" }}>
             <h1>Andy Zhu</h1>
-            <nav>
-                <ul>
-                    <li><a href = "/" className="Header">Home</a></li>
-                    <li><a href = "/Contact" className="Header">Contact</a></li>
-                </ul>
+            <nav className="navbar">
+                    <a href = "/" className="Header" style={{color: "darkgray"}}>Home</a>
+                    <a href = "/Contact" className="Header" style={{color: "darkgray"}}>Contact</a>
             </nav>
             <hr></hr>
         </header>
