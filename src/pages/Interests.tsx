@@ -18,9 +18,13 @@ export default function Interests() {
       <section className="interest-section card">
         <h2>Competitive Programming</h2>
         <p>
-          I've been doing competitive programming since high school. I'm a USACO Platinum
-          contestant, CCO Bronze Medalist, and contest manager for the Cambridge Competitive
-          Programming Society. I've also co-authored programming contests on DMOJ.
+          I've been doing competitive programming since high school, and I am a co-author of programming contests on DMOJ.
+        </p>
+        <h3>University of Cambridge Competitive Programming Society</h3>
+        <p>
+          I served as contest manager in the 2024-25 academic year, helping create and
+          run contests for the society. In 2025-26 I took on the role of treasurer, managing
+          the society's finances.
         </p>
         <h3>Profiles</h3>
         <div className="link-list">
@@ -44,7 +48,9 @@ export default function Interests() {
         <h2>Bridge</h2>
         <p>
           I enjoy playing contract bridge. I play regularly on Bridge Base Online and love
-          the strategic depth of bidding conventions and card play.
+          the strategic depth of bidding conventions and card play. 
+          
+          I was on the committee of the Cambridge University Bridge Club in 2025-26 as president.
         </p>
       </section>
     </div>
