@@ -42,6 +42,11 @@ export default function About() {
             <p className="subtitle">BA (Hons) Computer Science Tripos &middot; Selwyn College</p>
             <p className="date">Graduating July 2026</p>
           </div>
+          <div className="education-item">
+            <h3>St. George's School</h3>
+            <p className="subtitle">Vancouver, Canada</p>
+            <p className="date">September 2020 - June 2023</p>
+          </div>
           <h3 className="courses-heading">Relevant Courses</h3>
           <div className="tag-list">
             {courses.map(c => <span key={c} className="tag">{c}</span>)}
@@ -58,6 +63,17 @@ export default function About() {
               </div>
             </div>
           ))}
+        </section>
+        <section className="about-socials card">
+          <h2>Connect</h2>
+          <div className="link-list">
+            <a href="mailto:andy.zheyuan.zhu@gmail.com" className="link-chip">Email ↗</a>
+            <a href="https://github.com/andyzhu23" target="_blank" rel="noopener noreferrer" className="link-chip">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/andy-zhu-92409323b" target="_blank" rel="noopener noreferrer" className="link-chip">LinkedIn ↗</a>
+            <a href="https://open.spotify.com/user/andy_zhu23" target="_blank" rel="noopener noreferrer" className="link-chip">Spotify ↗</a>
+            <a href="https://www.instagram.com/littlenotorzzie" target="_blank" rel="noopener noreferrer" className="link-chip">Instagram ↗</a>
+            <span className="link-chip discord-chip">Discord: Wizard_of_Orz</span>
+          </div>
         </section>
       </div>
     </div>

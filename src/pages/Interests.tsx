@@ -1,6 +1,5 @@
 const cpProfiles = [
   { name: 'Codeforces', url: 'https://codeforces.com/profile/Wizard_of_Orz' },
-  { name: 'AtCoder', url: 'https://atcoder.jp/users/zheyuan' },
   { name: 'LeetCode', url: 'https://leetcode.com/u/Wizard_of_Orz/' },
   { name: 'DMOJ', url: 'https://dmoj.ca/user' },
 ];
@@ -47,16 +46,6 @@ export default function Interests() {
           I enjoy playing contract bridge. I play regularly on Bridge Base Online and love
           the strategic depth of bidding conventions and card play.
         </p>
-        <div className="link-list">
-          <a
-            href="https://www.bridgebase.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-chip"
-          >
-            Bridge Base Online ↗
-          </a>
-        </div>
       </section>
     </div>
   );
