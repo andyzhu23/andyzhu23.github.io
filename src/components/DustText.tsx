@@ -595,8 +595,21 @@ export default function DustText({ text, fontSize = 80, onAnimationDone }: Props
       animFrameRef.current = requestAnimationFrame(animate);
     };
 
-    animate();
-    return () => { cancelAnimationFrame(animFrameRef.current); window.removeEventListener('resize', resize); };
+    // Delay 1s so the layout settles and canvas gets the correct viewport size
+    const delayTimer = setTimeout(() => {
+      resize();
+      computeChars();
+      titleGrad = null; // force re-create with correct cyS
+      startTimeRef.current = performance.now();
+      lastTimeRef.current = performance.now();
+      animate();
+    }, 1000);
+
+    return () => {
+      clearTimeout(delayTimer);
+      cancelAnimationFrame(animFrameRef.current);
+      window.removeEventListener('resize', resize);
+    };
   }, [text, fontSize, onAnimationDone]);
 
   return (

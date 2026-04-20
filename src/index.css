@@ -49,7 +49,7 @@ ul {
 /* ===== Intro transition: background + navbar hidden until animation done ===== */
 canvas.ec-background {
   opacity: 0;
-  transition: opacity 2.5s ease-out 6s;
+  transition: opacity 2.5s ease-out 7s;
 }
 body.intro-done canvas.ec-background {
   opacity: 1;

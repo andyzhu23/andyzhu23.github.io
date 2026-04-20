@@ -3,7 +3,7 @@ export default function Blog() {
     <div className="page blog-page">
       <h1 className="page-title">Blog</h1>
       <div className="blog-empty card">
-        <img src="/blog-photo.jpg" alt="Andy at the beach" className="blog-photo" />
+        <img src="/images/blog-photo.jpg" alt="Andy at the beach" className="blog-photo" />
         <h2>Coming Soon</h2>
         <p>
           I'm planning to write about competitive programming, systems design,

@@ -17,7 +17,7 @@ export default function About() {
       <div className="about-grid">
         <section className="about-bio card">
           <div className="about-bio-inner">
-            <img src="/profile.jpg" alt="Andy Zhu" className="profile-photo" />
+            <img src="/images/profile.jpg" alt="Andy Zhu" className="profile-photo" />
             <div className="about-bio-text">
               <h2>Hello!</h2>
               <p>
