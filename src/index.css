@@ -204,7 +204,8 @@ body.intro-done .navbar {
 .home-name-dom {
   font-size: 5rem;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.25;
+  padding-bottom: 0.1em;
   margin-bottom: 1rem;
   font-family: 'Playfair Display', Georgia, serif;
   opacity: 0;
@@ -232,11 +233,10 @@ body.intro-done .navbar {
 }
 
 .home-chinese-name {
-  font-size: 1.5rem;
-  color: var(--text-muted);
-  letter-spacing: 6px;
-  margin-bottom: 0.5rem;
-  font-weight: 400;
+  display: block;
+  height: 5.0rem;
+  width: auto;
+  margin: 0 auto 0.5rem;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 1.5s ease-out 0.5s, transform 1.5s ease-out 0.5s;

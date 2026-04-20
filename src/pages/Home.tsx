@@ -46,7 +46,11 @@ export default function Home() {
           <span className="home-name-line">Andy</span>
           <span className="home-name-line">Zhu</span>
         </h1>
-        <p className={`home-chinese-name ${animDone ? 'visible' : ''}`}>朱哲远</p>
+        <img
+          src="/images/%E6%9C%B1%E5%93%B2%E8%BF%9C.png"
+          alt="朱哲远"
+          className={`home-chinese-name ${animDone ? 'visible' : ''}`}
+        />
         <p className={`home-tagline ${animDone ? 'visible' : ''}`}>
           Computer Science @ Cambridge &middot; Software Engineer
         </p>

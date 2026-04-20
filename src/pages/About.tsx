@@ -22,12 +22,12 @@ export default function About() {
               <h2>Hello!</h2>
               <p>
                 I'm Andy, a final-year Computer Science student at the University of Cambridge
-                (Selwyn College), graduating in July 2026. Born in Canada, I moved to Hangzhou, China
+                (Selwyn College), graduating in July 2026. Born in Montreal, Canada, I moved to Hangzhou, China
                 as a kid, then back to Vancouver, Canada before coming to Cambridge for undergrad.
               </p>
               <p>
                 I'm passionate about systems engineering, algorithms, and building tools that solve
-                real problems. I'm incoming at Jump Trading, and have previously interned at Meta
+                real problems. I'm an incoming software engineer intern at Jump Trading, and have previously interned at Meta
                 and Man Group, working across backend systems, debugging infrastructure, and data
                 pipelines. Outside of work, I'm a competitive programmer and contest author.
               </p>
@@ -39,7 +39,7 @@ export default function About() {
           <h2>Education</h2>
           <div className="education-item">
             <h3>University of Cambridge</h3>
-            <p className="subtitle">BA (Hons) Computer Science Tripos &middot; Selwyn College</p>
+            <p className="subtitle">BA (Hons) Computer Science Tripos</p>
             <p className="date">Graduating July 2026</p>
           </div>
           <div className="education-item">
