@@ -287,7 +287,7 @@ export default function Background() {
           ctx.setLineDash([]);
 
           // Addition chord: P → Q extended
-          const [px, py] = toScreen(cur);
+          toScreen(cur);
           const ldx = nearest.x - cur.x;
           const ldy = nearest.y - cur.y;
           const len = Math.sqrt(ldx * ldx + ldy * ldy);
