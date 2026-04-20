@@ -1,13 +1,13 @@
 const cpProfiles = [
   { name: 'Codeforces', url: 'https://codeforces.com/profile/Wizard_of_Orz' },
   { name: 'LeetCode', url: 'https://leetcode.com/u/Wizard_of_Orz/' },
-  { name: 'DMOJ', url: 'https://dmoj.ca/user' },
+  { name: 'DMOJ', url: 'https://dmoj.ca/user/andy_zhu23' },
 ];
 
 const contests = [
   { name: 'YAC 8', url: 'https://dmoj.ca/contest/yac8' },
   { name: 'SGSPC', url: 'https://dmoj.ca/contest/sgspc' },
-  { name: 'ARC', url: 'https://dmoj.ca/contest/arc' },
+  { name: 'ARC', url: 'https://dmoj.ca/contest/arc1' },
 ];
 
 export default function Interests() {
@@ -34,7 +34,7 @@ export default function Interests() {
             </a>
           ))}
         </div>
-        <h3>Contests Authored</h3>
+        <h3>Contests Co-authored</h3>
         <div className="link-list">
           {contests.map(c => (
             <a key={c.name} href={c.url} target="_blank" rel="noopener noreferrer" className="link-chip">
