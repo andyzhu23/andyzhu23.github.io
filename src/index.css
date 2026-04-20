@@ -55,6 +55,14 @@ body.intro-done canvas.ec-background {
   opacity: 1;
 }
 
+canvas.particle-network {
+  opacity: 0;
+  transition: opacity 2.5s ease-out 7s;
+}
+body.intro-done canvas.particle-network {
+  opacity: 1;
+}
+
 .navbar {
   opacity: 0;
   transition: opacity 1.5s ease-out;

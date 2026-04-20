@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Background from './components/Background';
+import ParticleNetwork from './components/ParticleNetwork';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
       <Background />
+      <ParticleNetwork />
       <Navbar />
       <main className="main-content">
         <Routes>
