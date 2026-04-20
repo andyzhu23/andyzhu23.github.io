@@ -467,14 +467,36 @@ export default function DustText({ text, fontSize = 80, onAnimationDone }: Props
           cl.impactTime += dt;
         }
 
-        if (cl.impactTime > 0.6) continue;
+        if (cl.impactTime > 0.8) continue;
 
-        const headX = cl.startX + (cl.targetX - cl.startX) * cl.progress;
-        const headY = cl.startY + (cl.targetY - cl.startY) * cl.progress;
-        const tp = Math.max(0, cl.progress - 0.2);
-        const tailX = cl.startX + (cl.targetX - cl.startX) * tp;
-        const tailY = cl.startY + (cl.targetY - cl.startY) * tp;
-        const a = cl.progress < 1 ? 0.9 : Math.max(0, 1 - cl.impactTime * 2.5);
+        // Direction vector (normalized)
+        const dirX = cl.targetX - cl.startX;
+        const dirY = cl.targetY - cl.startY;
+        const dirLen = Math.sqrt(dirX * dirX + dirY * dirY);
+        const ndx = dirX / dirLen;
+        const ndy = dirY / dirLen;
+
+        let headX: number, headY: number, tailX: number, tailY: number;
+        let a: number;
+
+        if (cl.progress < 1) {
+          // Approaching target
+          headX = cl.startX + dirX * cl.progress;
+          headY = cl.startY + dirY * cl.progress;
+          const tp = Math.max(0, cl.progress - 0.2);
+          tailX = cl.startX + dirX * tp;
+          tailY = cl.startY + dirY * tp;
+          a = 0.9;
+        } else {
+          // Continue past the target in the same direction
+          const overshoot = cl.impactTime * dirLen * 3;
+          headX = cl.targetX + ndx * overshoot;
+          headY = cl.targetY + ndy * overshoot;
+          const trailLen = dirLen * 0.2;
+          tailX = headX - ndx * trailLen;
+          tailY = headY - ndy * trailLen;
+          a = Math.max(0, 1 - cl.impactTime * 1.8);
+        }
 
         ctx.beginPath();
         ctx.moveTo(tailX, tailY);
