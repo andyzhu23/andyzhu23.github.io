@@ -9,6 +9,7 @@ import About from './pages/About';
 import Experience from './pages/Experience';
 import Blog from './pages/Blog';
 import Interests from './pages/Interests';
+import Projects from './pages/Projects';
 
 function App() {
   const location = useLocation();
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/Projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/interests" element={<Interests />} />
         </Routes>

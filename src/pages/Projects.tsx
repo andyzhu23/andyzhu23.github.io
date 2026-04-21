@@ -5,12 +5,12 @@ const projects = [
     description: 'Studied and implemented Gap Amplification construction used in Dinur\'s proof of the PCP theorem.',
     url: undefined as string | undefined,
     points: [
-      'Implemented the construction in C++',
-      'Studied various error-correcting codes used in PCP of Proximity constructions',
-      'Explored advanced topics such as Fast Reed-Solomon Interactive Oracle Proof (FRI) protocol',
+      'Implemented efficient construction for Constraint Satisfaction Problem (CSP) in C++',
+      'Studied various error-correcting codes (Hadamard code and Reed-Muller code) used in PCP of Proximity constructions',
+      'Evaluation performed using simulated annealing on CSP and analysis performed using NumPy and Matplotlib',
       'Supervised by Professor Tom Gur at Cambridge',
     ],
-    tags: ['C++', 'Theoretical CS', 'PCP Theorem'],
+    tags: ['C++', 'NumPy', 'Matplotlib', 'Theoretical CS', 'PCP Theorem', 'PCP of Proximity'],
   },
   {
     title: 'Differential Analyser Simulator',
