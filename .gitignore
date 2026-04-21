@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Raw photo originals (optimized output goes to public/images/posts/)
+/photos-raw/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

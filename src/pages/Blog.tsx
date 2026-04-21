@@ -1,14 +1,15 @@
+import BlogPost from '../components/BlogPost';
+import { blogPosts } from '../data/blogPosts';
+
 export default function Blog() {
   return (
     <div className="page blog-page">
       <h1 className="page-title">Blog</h1>
-      <div className="blog-empty card">
-        <img src="/images/blog-photo.jpg" alt="Andy at the beach" className="blog-photo" />
-        <h2>Coming Soon</h2>
-        <p>
-          I'm planning to write about competitive programming, systems design,
-          and things I learn along the way. Stay tuned!
-        </p>
+      <p className="blog-intro">A photo feed — recent trips, events, and moments.</p>
+      <div className="blog-feed">
+        {blogPosts.map(post => (
+          <BlogPost key={post.id} post={post} />
+        ))}
       </div>
     </div>
   );
