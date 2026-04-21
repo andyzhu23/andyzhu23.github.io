@@ -55,7 +55,7 @@ export const photoPosts: PhotoPost[] = [
     title: 'Year of the Horse',
     date: 'February 21, 2026',
     location: 'Cambridge',
-    caption: 'CSSA Lunar New Year — couplets, red lanterns, and way too much food.',
+    caption: 'CCS Lunar New Year — couplets and red lanterns.',
     photos: ['IMG_4724'],
   },
   {
