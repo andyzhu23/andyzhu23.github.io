@@ -366,7 +366,7 @@ const rawPosts: PhotoPost[] = [
     title: 'Italy, first time',
     date: 'March 13–17, 2023',
     location: 'Italy',
-    caption: 'First proper continental trip — fried fish, grilled chops, a fleur-de-lis in the cappuccino foam. Three of us in a six-bed hostel room.',
+    caption: 'First proper trip to Europe — fried fish, grilled chops, a fleur-de-lis in the cappuccino foam. Three of us in a six-bed hostel room.',
     photos: [
       'IMG_4496', 'IMG_4495',
       'IMG_2725', 'IMG_2754', 'IMG_2784', 'IMG_2790',
