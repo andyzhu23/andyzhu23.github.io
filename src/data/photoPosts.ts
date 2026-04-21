@@ -290,9 +290,8 @@ export const photoPosts: PhotoPost[] = [
     location: 'Vancouver & Hangzhou',
     caption: 'The last summer before Cambridge — sea urchins, long afternoons, one final run around the usual places.',
     photos: [
-      'IMG_3037', 'IMG_3008',
+      'd6e83e6b7502bf7ac4fbac2358bbf895', 'IMG_3008',
       '9539086089928d7bc31a092f8222b2f3',
-      'd6e83e6b7502bf7ac4fbac2358bbf895',
       'e76d990056fa1c8f81bffd397daa8f25',
     ],
   },
