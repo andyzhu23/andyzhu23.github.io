@@ -1,9 +1,9 @@
-// Photo blog posts. Newest first.
+// Photo feed posts. Newest first.
 // Photo filenames refer to /public/images/posts/{web,thumb}/<name>.jpg.
 // Regenerate those outputs with `npm run optimize-photos`.
 // Titles, locations, and captions are best-guess — edit freely.
 
-export interface BlogPost {
+export interface PhotoPost {
   id: string;
   title: string;
   date: string;
@@ -12,7 +12,7 @@ export interface BlogPost {
   photos: string[];
 }
 
-export const blogPosts: BlogPost[] = [
+export const photoPosts: PhotoPost[] = [
   {
     id: 'apr-2026-london-dinner',
     title: 'Dinner in the city',

@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Experience from './pages/Experience';
-import Blog from './pages/Blog';
+import Photos from './pages/Photos';
 import Interests from './pages/Interests';
 import Projects from './pages/Projects';
 
@@ -32,7 +32,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/Projects" element={<Projects />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/photos" element={<Photos />} />
           <Route path="/interests" element={<Interests />} />
         </Routes>
       </main>

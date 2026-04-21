@@ -729,14 +729,33 @@ body.intro-done .navbar {
   font-size: 0.95rem;
 }
 
-/* ===== Blog ===== */
-.blog-intro {
+/* ===== Photos ===== */
+.photos-hero {
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 3 / 2;
+  margin: 0 auto 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.photos-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.photos-intro {
   color: var(--text-muted);
   margin-bottom: 2.5rem;
   max-width: 680px;
 }
 
-.blog-feed {
+.photos-feed {
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -744,22 +763,22 @@ body.intro-done .navbar {
   margin: 0 auto;
 }
 
-.blog-post {
+.photo-post {
   padding: 1.25rem 1.25rem 1.5rem;
   overflow: hidden;
 }
 
-.blog-post-header {
+.photo-post-header {
   margin-bottom: 1rem;
 }
 
-.blog-post-title {
+.photo-post-title {
   font-size: 1.25rem;
   color: var(--accent);
   margin-bottom: 0.25rem;
 }
 
-.blog-post-meta {
+.photo-post-meta {
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -768,11 +787,11 @@ body.intro-done .navbar {
   font-family: var(--font-mono);
 }
 
-.blog-post-sep {
+.photo-post-sep {
   opacity: 0.5;
 }
 
-.blog-post-caption {
+.photo-post-caption {
   margin-top: 1rem;
   color: var(--text);
   font-size: 0.95rem;
@@ -890,7 +909,7 @@ body.intro-done .navbar {
 }
 
 @media (max-width: 640px) {
-  .blog-post {
+  .photo-post {
     padding: 1rem;
   }
   .photo-carousel {
@@ -900,6 +919,10 @@ body.intro-done .navbar {
     width: 32px;
     height: 32px;
     font-size: 1.3rem;
+  }
+  .photos-hero {
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
   }
 }
 
