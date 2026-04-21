@@ -12,8 +12,11 @@ function useFontSize() {
   return size;
 }
 
-// Module-level flag: survives SPA navigation, resets on full page refresh
-let introPlayedThisSession = false;
+// Module-level flag: survives SPA navigation, resets on full page refresh.
+// If the user's initial entry was not the home page, treat the intro as already
+// played so navigating to home later doesn't awkwardly trigger the animation.
+let introPlayedThisSession =
+  window.location.pathname !== '/' && window.location.pathname !== '';
 
 export default function Home() {
   const fontSize = useFontSize();

@@ -1,5 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Background from './components/Background';
 import ParticleNetwork from './components/ParticleNetwork';
 import Navbar from './components/Navbar';
@@ -12,15 +11,6 @@ import Interests from './pages/Interests';
 import Projects from './pages/Projects';
 
 function App() {
-  const location = useLocation();
-
-  // On non-home pages, show background/navbar immediately
-  useEffect(() => {
-    if (location.pathname !== '/') {
-      document.body.classList.add('intro-done');
-    }
-  }, [location.pathname]);
-
   return (
     <>
       <Background />
