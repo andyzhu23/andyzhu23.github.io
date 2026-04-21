@@ -444,7 +444,7 @@ body.intro-done .navbar {
   height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 40%;
   border: 3px solid var(--border-hover);
   flex-shrink: 0;
   box-shadow: 0 0 30px rgba(100, 200, 255, 0.1);
