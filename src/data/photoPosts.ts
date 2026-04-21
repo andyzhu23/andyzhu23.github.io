@@ -261,7 +261,7 @@ const rawPosts: PhotoPost[] = [
     title: 'Gaming with the boys',
     date: 'March 13–21, 2025',
     location: 'Cambridge',
-    caption: 'Late-night Bridge sessions in the JCR.',
+    caption: 'Late-night gaming sessions in the JCR.',
     photos: ['IMG_3849', 'IMG_3827'],
   },
   {
