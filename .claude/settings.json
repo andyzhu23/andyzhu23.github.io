@@ -6,7 +6,7 @@
           {
             "type": "command",
             "command": "/Users/andyzhu/Desktop/andyzhu23.github.io/.claude/record-session.sh",
-            "timeout": 30
+            "timeout": 300
           }
         ]
       }

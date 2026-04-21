@@ -42,13 +42,6 @@ public/
   CV_Andy_Zhu.pdf  — downloadable CV (About page → Curriculum Vitae card)
 ```
 
-## Session Recording
-Every Claude Code session automatically appends its transcript to this CLAUDE.md
-when it ends. Wired via `.claude/settings.json` → SessionEnd hook →
-`.claude/record-session.sh`. Sessions appear below this line, each prefixed with
-a `## Session <timestamp>` header. Trim or archive old sessions periodically to
-keep the file from growing unbounded (it is loaded into context every session).
-
 ## Intro Animation Sequence (DustText.tsx)
 The home page plays an Ultraman Nexus-inspired intro on first visit:
 1. Slow full-screen explosion with particles (0-5s)
