@@ -19,7 +19,7 @@ export const photoPosts: PhotoPost[] = [
     date: 'April 16, 2026',
     location: 'London',
     caption: 'Scallops and dry-aged steaks — felt fancy.',
-    photos: ['IMG_4784', 'IMG_4782'],
+    photos: ['IMG_4784', 'IMG_4782', 'IMG_4780', 'IMG_4781'],
   },
   {
     id: 'apr-2026-barbican',
