@@ -106,13 +106,26 @@ Style notes pulled from existing posts:
 - Don't narrate the obvious. Pick one specific thing about the day.
 - Order `photos` so the best/cover shot is first — it's the thumbnail in the feed.
 
-### 7. Verify
+### 7. Verify — including rotation
 
 Run the build to catch type errors and confirm no broken references:
 
 ```bash
 npm run build
 ```
+
+**Then open each new web JPG with Read and visually confirm orientation.** This is a known gotcha: the optimizer can double-apply EXIF orientation on portrait-shot HEICs (sips rotates during HEIC→JPEG conversion, then sharp's `.rotate()` applies the stale orientation tag a second time), producing sideways or upside-down output. Landscape-shot HEICs and iPhone JPGs are generally fine.
+
+If a file is rotated wrong, fix it in place with `sips -r <deg>` (must be run from `public/images/posts/`):
+
+```bash
+cd public/images/posts
+sips -r 90  web/IMG_XXXX.jpg thumb/IMG_XXXX.jpg > /dev/null   # 90° clockwise
+sips -r 180 web/IMG_XXXX.jpg thumb/IMG_XXXX.jpg > /dev/null   # upside-down
+sips -r 270 web/IMG_XXXX.jpg thumb/IMG_XXXX.jpg > /dev/null   # 90° counter-clockwise
+```
+
+Re-read the file afterwards to confirm. Apply the same rotation to both `web/` and `thumb/` so the feed and lightbox stay consistent.
 
 If the user is iterating visually, suggest `npm run dev` instead.
 
@@ -127,7 +140,8 @@ rm -rf public/images/posts/tmp
 ## Common pitfalls
 
 - **HEIC files never reach Read directly.** Always convert to JPG previews in `/tmp/` before trying to view them.
-- **Don't hand-edit files in `public/images/posts/web/` or `/thumb/`.** They're regenerated from `photos-raw/`. Edits live in `photos-raw/` originals.
+- **Portrait HEICs often come out rotated.** See step 7 — always Read the web/ outputs and fix with `sips -r` before declaring done.
+- **Don't hand-edit files in `public/images/posts/web/` or `/thumb/`.** They're regenerated from `photos-raw/` — but rotation fixes via `sips -r` are the exception, since re-running the optimizer would just re-introduce the double-rotation bug.
 - **Spaces in filenames get stripped** by the optimizer (`FullSizeRender 2.HEIC` → `FullSizeRender2.jpg`). Reference the stripped name in `photoPosts.ts`.
 - **Date = nil in EXIF** usually means the photo was shared over an app that stripped metadata. Check filename ordering or ask the user which trip it belongs to rather than guessing.
 - **Landscape vs. portrait matters** for the grid layout — mixing orientations within a post is fine, but keep the hero photo (first in array) as a strong standalone shot.
