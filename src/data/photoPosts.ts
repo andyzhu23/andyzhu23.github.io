@@ -181,7 +181,7 @@ export const photoPosts: PhotoPost[] = [
     title: 'Summer in Meta',
     date: 'July 25, 2025',
     location: 'Cambridge',
-    caption: 'Empty colleges, blue skies, the CB1 skyline in the distance.',
+    caption: 'Empty roof gardon at Meta on a chill Friday.',
     photos: ['IMG_4244'],
   },
   {
