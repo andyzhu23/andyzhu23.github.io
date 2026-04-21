@@ -88,7 +88,7 @@ ls public/images/posts/web/ | grep -E "(pattern matching your new bases)"
 
 ### 6. Update src/data/photoPosts.ts
 
-`photoPosts` is ordered newest-first. Insert each new entry at the correct chronological position. Each entry matches this interface:
+Append new entries to the `rawPosts` array — insertion order doesn't matter. The file sorts `rawPosts` by parsing the `date` field before exporting as `photoPosts`, so the feed always shows newest-first regardless of where you put the entry. Each entry matches this interface:
 
 ```ts
 {
@@ -105,6 +105,13 @@ Style notes pulled from existing posts:
 - Captions are short, warm, not promotional. Details over adjectives ("Cantonese night with the usual suspects", "rare ribeye and scallops — a small celebration").
 - Don't narrate the obvious. Pick one specific thing about the day.
 - Order `photos` so the best/cover shot is first — it's the thumbnail in the feed.
+
+The `date` parser supports these formats (and uses the latest point in any range for sorting):
+- `"April 16, 2026"` — single day
+- `"March 21–25, 2026"` — day range within a month
+- `"August 1–4, 2025"` — short range
+- `"June–September 2023"` — month range, no specific day
+- `"December 2024"` — whole month
 
 ### 7. Verify — including rotation
 

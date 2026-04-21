@@ -1,7 +1,9 @@
-// Photo feed posts. Newest first.
+// Photo feed posts.
 // Photo filenames refer to /public/images/posts/{web,thumb}/<name>.jpg.
 // Regenerate those outputs with `npm run optimize-photos`.
-// Titles, locations, and captions are best-guess — edit freely.
+// Insertion order doesn't matter — the array is sorted newest-first on export
+// by parsing the `date` field. Accepts "April 16, 2026", "March 21–25, 2026",
+// "June–September 2023", "December 2024", etc.
 
 export interface PhotoPost {
   id: string;
@@ -12,7 +14,29 @@ export interface PhotoPost {
   photos: string[];
 }
 
-export const photoPosts: PhotoPost[] = [
+const MONTHS: Record<string, number> = {
+  january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+  july: 6, august: 7, september: 8, october: 9, november: 10, december: 11,
+};
+
+function parseSortDate(s: string): Date {
+  const yearMatch = s.match(/\b(\d{4})\b/);
+  const year = yearMatch ? parseInt(yearMatch[1], 10) : 0;
+
+  const monthMatches = s.match(/January|February|March|April|May|June|July|August|September|October|November|December/gi) ?? [];
+  const lastMonth = monthMatches.length > 0
+    ? MONTHS[monthMatches[monthMatches.length - 1].toLowerCase()]
+    : 11;
+
+  const dayMatches = (s.match(/\b(\d{1,2})\b/g) ?? [])
+    .map(n => parseInt(n, 10))
+    .filter(n => n >= 1 && n <= 31);
+  const lastDay = dayMatches.length > 0 ? Math.max(...dayMatches) : 28;
+
+  return new Date(year, lastMonth, lastDay);
+}
+
+const rawPosts: PhotoPost[] = [
   {
     id: 'apr-2026-london-dinner',
     title: 'Dinner in the city',
@@ -289,7 +313,7 @@ export const photoPosts: PhotoPost[] = [
     date: 'June 14, 2024',
     location: 'Cambridge',
     caption: 'Wandering past Ridley Hall and the old theological quads at the end of Easter term.',
-    photos: ['IMG_3252', 'IMG_3253', 'IMG_3209'],
+    photos: ['IMG_3252', 'IMG_3253'],
   },
   {
     id: 'apr-2024-sea-to-sky',
@@ -328,7 +352,7 @@ export const photoPosts: PhotoPost[] = [
     title: 'Summer 2023',
     date: 'June–September 2023',
     location: 'Vancouver & Hangzhou',
-    caption: 'The last summer before Cambridge — sea urchins, long afternoons, one final run around the usual places.',
+    caption: 'The summer I graduated high school — sea urchins, long afternoons, one final run around the usual places.',
     photos: [
       'd6e83e6b7502bf7ac4fbac2358bbf895', 'IMG_3008',
       '9539086089928d7bc31a092f8222b2f3',
@@ -342,7 +366,7 @@ export const photoPosts: PhotoPost[] = [
     title: 'Italy, first time',
     date: 'March 13–17, 2023',
     location: 'Italy',
-    caption: 'First proper continental trip from Cambridge — fried fish, grilled chops, a fleur-de-lis in the cappuccino foam. Three of us in a six-bed hostel room.',
+    caption: 'First proper continental trip — fried fish, grilled chops, a fleur-de-lis in the cappuccino foam. Three of us in a six-bed hostel room.',
     photos: [
       'IMG_4496', 'IMG_4495',
       'IMG_2725', 'IMG_2754', 'IMG_2784', 'IMG_2790',
@@ -350,3 +374,7 @@ export const photoPosts: PhotoPost[] = [
     ],
   },
 ];
+
+export const photoPosts: PhotoPost[] = [...rawPosts].sort(
+  (a, b) => parseSortDate(b.date).getTime() - parseSortDate(a.date).getTime(),
+);
