@@ -15,7 +15,14 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <NavLink to="/" className="navbar-brand">AZ</NavLink>
+      <NavLink to="/" className="navbar-brand">
+        <img
+          src={`${import.meta.env.BASE_URL}images/Gemini_Generated_Image_zbzxjtzbzxjtzbzx.png`}
+          alt="Andy Zhu avatar"
+          className="navbar-avatar"
+        />
+        <span>AZ</span>
+      </NavLink>
       <button
         className={`navbar-toggle ${menuOpen ? 'open' : ''}`}
         onClick={() => setMenuOpen(!menuOpen)}

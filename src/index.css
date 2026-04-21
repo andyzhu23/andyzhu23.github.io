@@ -93,6 +93,19 @@ body.intro-done .navbar {
   color: var(--accent) !important;
   letter-spacing: 2px;
   font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.navbar-avatar {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 8px rgba(100, 200, 255, 0.25);
 }
 
 .navbar-links {

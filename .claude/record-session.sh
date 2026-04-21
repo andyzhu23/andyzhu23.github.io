@@ -17,8 +17,16 @@ if [ -z "$(git status --porcelain)" ]; then
   exit 0
 fi
 
-git add -A && \
-git commit -m "chore: auto-deploy $ts" && \
+git add -A || exit 0
+
+diff="$(git diff --cached)"
+msg="$(printf '%s' "$diff" | claude -p 'Write a single conventional-commit message (e.g. "feat: ...", "fix: ...", "chore: ...") summarising this staged diff. Subject line only, under 72 chars, lowercase after the type prefix, no trailing period, no body, no code fences, no quotes. Output only the message.' 2>/dev/null | tr -d '\r' | awk 'NF{print; exit}')"
+
+if [ -z "$msg" ]; then
+  msg="chore: auto-deploy $ts"
+fi
+
+git commit -m "$msg" && \
 git push origin main && \
 npm run deploy
 
