@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/andyzhu/Desktop/andyzhu23.github.io/.claude/record-session.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

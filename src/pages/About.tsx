@@ -64,6 +64,20 @@ export default function About() {
             </div>
           ))}
         </section>
+        <section className="about-cv card">
+          <h2>Curriculum Vitae</h2>
+          <p>Download a PDF copy of my CV.</p>
+          <a
+            href={`${import.meta.env.BASE_URL}CV_Andy_Zhu.pdf`}
+            download="Andy_Zhu_CV.pdf"
+            className="cv-download"
+          >
+            <span className="cv-icon">PDF</span>
+            <span className="cv-label">Download CV</span>
+            <span className="cv-arrow">↓</span>
+          </a>
+        </section>
+
         <section className="about-socials card">
           <h2>Connect</h2>
           <div className="link-list">

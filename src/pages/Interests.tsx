@@ -53,6 +53,13 @@ export default function Interests() {
           I was on the committee of the Cambridge University Bridge Club in 2025-26 as president.
         </p>
       </section>
+
+      <section className="interest-section card">
+        <h2>Super Smash Bros Ultimate</h2>
+        <p>
+          I used to grind smash back in the day. Lucina main, and I secondary Mr. Game & Watch and King K. Rool.
+        </p>
+      </section>
     </div>
   );
 }

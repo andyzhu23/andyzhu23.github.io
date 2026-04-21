@@ -57,6 +57,13 @@ export default function Home() {
         <div className={`home-cta ${animDone ? 'visible' : ''}`}>
           <Link to="/about" className="btn btn-primary">About Me</Link>
           <Link to="/experience" className="btn btn-outline">Experience</Link>
+          <a
+            href={`${import.meta.env.BASE_URL}CV_Andy_Zhu.pdf`}
+            download="Andy_Zhu_CV.pdf"
+            className="btn btn-outline"
+          >
+            Download CV ↓
+          </a>
         </div>
         <div className={`home-socials ${animDone ? 'visible' : ''}`}>
           <a href="https://github.com/andyzhu23" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a>
