@@ -85,9 +85,16 @@ Verify the expected outputs landed:
 ls public/images/posts/ | grep -E "(pattern matching your new bases)"
 ```
 
-### 6. Update src/data/photoPosts.ts
+### 6. Update the year file under src/data/photoPosts/
 
-Append new entries to the `rawPosts` array — insertion order doesn't matter. The file sorts `rawPosts` by parsing the `date` field before exporting as `photoPosts`, so the feed always shows newest-first regardless of where you put the entry. Each entry matches this interface:
+Posts are grouped by year. Pick the file that matches the post's year (e.g. `src/data/photoPosts/2026.ts`) and append to the exported `posts<Year>` array. If the year file doesn't exist yet:
+
+1. Create `src/data/photoPosts/<year>.ts` following the same shape as an existing year (see `2025.ts`): `import type { PhotoPost } from './types'; export const posts<year>: PhotoPost[] = [ ... ];`
+2. Add `import { posts<year> } from './<year>';` and include it in the `rawPosts` concatenation inside `src/data/photoPosts/index.ts`.
+
+Insertion order within a year doesn't matter — `index.ts` concatenates all years and sorts by parsing the `date` field before exporting `photoPosts`, so the feed is always newest-first.
+
+Each entry matches this interface:
 
 ```ts
 {
@@ -114,11 +121,13 @@ The `date` parser supports these formats (and uses the latest point in any range
 
 ### 7. Verify — including rotation
 
-Run the build to catch type errors and confirm no broken references:
+Run the build. `npm run check-photos` runs first and will fail the build if any `photos: [...]` base is missing from `public/images/posts/`; `tsc -b` then catches type errors.
 
 ```bash
 npm run build
 ```
+
+`check-photos` also warns on oversized outputs (>600 KB — usually means the optimizer wasn't run), orphan files (on disk but not referenced by any post), and duplicate bases across posts. Warnings don't fail the build but are worth addressing.
 
 **Then open each new output JPG with Read and visually confirm orientation.** This is a known gotcha: the optimizer can double-apply EXIF orientation on portrait-shot HEICs (sips rotates during HEIC→JPEG conversion, then sharp's `.rotate()` applies the stale orientation tag a second time), producing sideways or upside-down output. Landscape-shot HEICs and iPhone JPGs are generally fine.
 
@@ -148,7 +157,7 @@ rm -rf public/images/posts/tmp
 - **HEIC files never reach Read directly.** Always convert to JPG previews in `/tmp/` before trying to view them.
 - **Portrait HEICs often come out rotated.** See step 7 — always Read the outputs and fix with `sips -r` before declaring done.
 - **Don't hand-edit files in `public/images/posts/`.** They're regenerated from `photos-raw/` — but rotation fixes via `sips -r` are the exception, since re-running the optimizer would just re-introduce the double-rotation bug.
-- **Spaces in filenames get stripped** by the optimizer (`FullSizeRender 2.HEIC` → `FullSizeRender2.jpg`). Reference the stripped name in `photoPosts.ts`.
+- **Spaces in filenames get stripped** by the optimizer (`FullSizeRender 2.HEIC` → `FullSizeRender2.jpg`). Reference the stripped name in the year file.
 - **Date = nil in EXIF** usually means the photo was shared over an app that stripped metadata. Check filename ordering or ask the user which trip it belongs to rather than guessing.
 - **Landscape vs. portrait matters** for the grid layout — mixing orientations within a post is fine, but keep the hero photo (first in array) as a strong standalone shot.
 - **Don't invent locations.** If you can't tell from the image and no EXIF GPS is available, use a broader region ("British Columbia" instead of a specific trail name) or ask.
