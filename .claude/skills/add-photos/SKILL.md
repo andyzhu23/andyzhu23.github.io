@@ -1,11 +1,11 @@
 ---
 name: add-photos
-description: Process raw photos from public/images/posts/tmp/ into web/thumb JPGs and add them as entries in src/data/photoPosts.ts. Trigger when the user says things like "add photos", "process photos in tmp", "add new photos to the photos section", or drops files into public/images/posts/tmp/.
+description: Process raw photos from public/images/posts/tmp/ into web JPGs and add them as entries in src/data/photoPosts.ts. Trigger when the user says things like "add photos", "process photos in tmp", "add new photos to the photos section", or drops files into public/images/posts/tmp/.
 ---
 
 # Add photos to the photo feed
 
-Use this skill whenever the user drops raw photos into `public/images/posts/tmp/` and wants them processed into posts on the site. The workflow turns any HEIC/JPG/PNG originals into web + thumb JPGs and adds entries to `src/data/photoPosts.ts`.
+Use this skill whenever the user drops raw photos into `public/images/posts/tmp/` and wants them processed into posts on the site. The workflow turns any HEIC/JPG/PNG originals into web JPGs and adds entries to `src/data/photoPosts.ts`.
 
 ## Inputs you should expect
 
@@ -14,8 +14,7 @@ Use this skill whenever the user drops raw photos into `public/images/posts/tmp/
 
 ## Output the site expects
 
-- `public/images/posts/web/<base>.jpg` (max side 1600, quality 82)
-- `public/images/posts/thumb/<base>.jpg` (max side 480, quality 75)
+- `public/images/posts/<base>.jpg` (max side 1600, quality 82)
 - One or more entries appended to the `photoPosts` array in `src/data/photoPosts.ts`
 
 The `<base>` is the original filename without extension, with spaces stripped. Filenames are referenced by `<base>` only — the components append `.jpg` themselves.
@@ -78,12 +77,12 @@ cp public/images/posts/tmp/*.png photos-raw/ 2>/dev/null
 npm run optimize-photos
 ```
 
-This reads every file in `photos-raw/`, writes `web/<base>.jpg` and `thumb/<base>.jpg` to `public/images/posts/`, and is idempotent — already-fresh outputs are skipped. It converts HEIC via `sips` internally, then pipes through `sharp` + `mozjpeg`.
+This reads every file in `photos-raw/`, writes `<base>.jpg` to `public/images/posts/`, and is idempotent — already-fresh outputs are skipped. It converts HEIC via `sips` internally, then pipes through `sharp` + `mozjpeg`.
 
 Verify the expected outputs landed:
 
 ```bash
-ls public/images/posts/web/ | grep -E "(pattern matching your new bases)"
+ls public/images/posts/ | grep -E "(pattern matching your new bases)"
 ```
 
 ### 6. Update src/data/photoPosts.ts
@@ -121,24 +120,24 @@ Run the build to catch type errors and confirm no broken references:
 npm run build
 ```
 
-**Then open each new web JPG with Read and visually confirm orientation.** This is a known gotcha: the optimizer can double-apply EXIF orientation on portrait-shot HEICs (sips rotates during HEIC→JPEG conversion, then sharp's `.rotate()` applies the stale orientation tag a second time), producing sideways or upside-down output. Landscape-shot HEICs and iPhone JPGs are generally fine.
+**Then open each new output JPG with Read and visually confirm orientation.** This is a known gotcha: the optimizer can double-apply EXIF orientation on portrait-shot HEICs (sips rotates during HEIC→JPEG conversion, then sharp's `.rotate()` applies the stale orientation tag a second time), producing sideways or upside-down output. Landscape-shot HEICs and iPhone JPGs are generally fine.
 
-If a file is rotated wrong, fix it in place with `sips -r <deg>` (must be run from `public/images/posts/`):
+If a file is rotated wrong, fix it in place with `sips -r <deg>`:
 
 ```bash
 cd public/images/posts
-sips -r 90  web/IMG_XXXX.jpg thumb/IMG_XXXX.jpg > /dev/null   # 90° clockwise
-sips -r 180 web/IMG_XXXX.jpg thumb/IMG_XXXX.jpg > /dev/null   # upside-down
-sips -r 270 web/IMG_XXXX.jpg thumb/IMG_XXXX.jpg > /dev/null   # 90° counter-clockwise
+sips -r 90  IMG_XXXX.jpg > /dev/null   # 90° clockwise
+sips -r 180 IMG_XXXX.jpg > /dev/null   # upside-down
+sips -r 270 IMG_XXXX.jpg > /dev/null   # 90° counter-clockwise
 ```
 
-Re-read the file afterwards to confirm. Apply the same rotation to both `web/` and `thumb/` so the feed and lightbox stay consistent.
+Re-read the file afterwards to confirm.
 
 If the user is iterating visually, suggest `npm run dev` instead.
 
 ### 8. Clean up
 
-Remove the tmp directory once the photos are safely in `photos-raw/` and `public/images/posts/{web,thumb}/`:
+Remove the tmp directory once the photos are safely in `photos-raw/` and `public/images/posts/`:
 
 ```bash
 rm -rf public/images/posts/tmp
@@ -147,8 +146,8 @@ rm -rf public/images/posts/tmp
 ## Common pitfalls
 
 - **HEIC files never reach Read directly.** Always convert to JPG previews in `/tmp/` before trying to view them.
-- **Portrait HEICs often come out rotated.** See step 7 — always Read the web/ outputs and fix with `sips -r` before declaring done.
-- **Don't hand-edit files in `public/images/posts/web/` or `/thumb/`.** They're regenerated from `photos-raw/` — but rotation fixes via `sips -r` are the exception, since re-running the optimizer would just re-introduce the double-rotation bug.
+- **Portrait HEICs often come out rotated.** See step 7 — always Read the outputs and fix with `sips -r` before declaring done.
+- **Don't hand-edit files in `public/images/posts/`.** They're regenerated from `photos-raw/` — but rotation fixes via `sips -r` are the exception, since re-running the optimizer would just re-introduce the double-rotation bug.
 - **Spaces in filenames get stripped** by the optimizer (`FullSizeRender 2.HEIC` → `FullSizeRender2.jpg`). Reference the stripped name in `photoPosts.ts`.
 - **Date = nil in EXIF** usually means the photo was shared over an app that stripped metadata. Check filename ordering or ask the user which trip it belongs to rather than guessing.
 - **Landscape vs. portrait matters** for the grid layout — mixing orientations within a post is fine, but keep the hero photo (first in array) as a strong standalone shot.

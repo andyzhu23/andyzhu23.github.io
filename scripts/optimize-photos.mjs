@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Convert/resize raw photos in /photos-raw/ to web-sized JPGs under public/images/posts/{web,thumb}/.
+// Convert/resize raw photos in /photos-raw/ to web-sized JPGs under public/images/posts/.
 // Idempotent: skips outputs newer than source.
 
 import { readdir, stat, mkdir, unlink } from 'node:fs/promises';
@@ -14,16 +14,13 @@ const execFileP = promisify(execFile);
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const SRC_DIR = join(ROOT, 'photos-raw');
-const OUT_WEB = join(ROOT, 'public/images/posts/web');
-const OUT_THUMB = join(ROOT, 'public/images/posts/thumb');
+const OUT_DIR = join(ROOT, 'public/images/posts');
 
 const SKIP_NAMES = new Set(['.DS_Store', '朱哲远.png']);
 const PHOTO_EXT = new Set(['.jpg', '.jpeg', '.png', '.heic']);
 
-const WEB_MAX = 1600;
-const WEB_QUALITY = 82;
-const THUMB_MAX = 480;
-const THUMB_QUALITY = 75;
+const MAX_SIDE = 1600;
+const QUALITY = 82;
 
 async function ensureDir(p) {
   await mkdir(p, { recursive: true });
@@ -50,13 +47,10 @@ async function processOne(srcPath) {
   const rawBase = basename(srcPath, extname(srcPath));
   const base = rawBase.replace(/\s+/g, '');
   const ext = extname(srcPath).toLowerCase();
-  const webOut = join(OUT_WEB, `${base}.jpg`);
-  const thumbOut = join(OUT_THUMB, `${base}.jpg`);
+  const out = join(OUT_DIR, `${base}.jpg`);
 
   const srcStat = await stat(srcPath);
-  const webFresh = await isFresh(srcStat, webOut);
-  const thumbFresh = await isFresh(srcStat, thumbOut);
-  if (webFresh && thumbFresh) return { skipped: true, base };
+  if (await isFresh(srcStat, out)) return { skipped: true, base };
 
   let pipeline;
   if (ext === '.heic') {
@@ -66,16 +60,10 @@ async function processOne(srcPath) {
     pipeline = () => sharp(srcPath).rotate();
   }
 
-  await Promise.all([
-    pipeline()
-      .resize({ width: WEB_MAX, height: WEB_MAX, fit: 'inside', withoutEnlargement: true })
-      .jpeg({ quality: WEB_QUALITY, mozjpeg: true })
-      .toFile(webOut),
-    pipeline()
-      .resize({ width: THUMB_MAX, height: THUMB_MAX, fit: 'inside', withoutEnlargement: true })
-      .jpeg({ quality: THUMB_QUALITY, mozjpeg: true })
-      .toFile(thumbOut),
-  ]);
+  await pipeline()
+    .resize({ width: MAX_SIDE, height: MAX_SIDE, fit: 'inside', withoutEnlargement: true })
+    .jpeg({ quality: QUALITY, mozjpeg: true })
+    .toFile(out);
 
   return { skipped: false, base };
 }
@@ -85,8 +73,7 @@ async function main() {
     console.error(`Source directory not found: ${SRC_DIR}`);
     process.exit(1);
   }
-  await ensureDir(OUT_WEB);
-  await ensureDir(OUT_THUMB);
+  await ensureDir(OUT_DIR);
 
   const entries = await readdir(SRC_DIR);
   const photos = entries.filter((name) => {

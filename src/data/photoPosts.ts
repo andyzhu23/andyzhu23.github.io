@@ -1,5 +1,5 @@
 // Photo feed posts.
-// Photo filenames refer to /public/images/posts/{web,thumb}/<name>.jpg.
+// Photo filenames refer to /public/images/posts/<name>.jpg.
 // Regenerate those outputs with `npm run optimize-photos`.
 // Insertion order doesn't matter — the array is sorted newest-first on export
 // by parsing the `date` field. Accepts "April 16, 2026", "March 21–25, 2026",

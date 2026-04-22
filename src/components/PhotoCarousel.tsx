@@ -43,7 +43,7 @@ export default function PhotoCarousel({ photos }: PhotoCarouselProps) {
           return (
             <div key={photo} className="carousel-slide">
               <img
-                src={`/images/posts/web/${photo}.jpg`}
+                src={`/images/posts/${photo}.jpg`}
                 alt=""
                 loading={near ? 'eager' : 'lazy'}
                 draggable={false}
