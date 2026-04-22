@@ -11,7 +11,7 @@ const links = [
   { to: '/interests', label: 'Interests' },
 ];
 
-const avatarSrc = `${import.meta.env.BASE_URL}images/Gemini_Generated_Image_zbzxjtzbzxjtzbzx.png`;
+const avatarSrc = `${import.meta.env.BASE_URL}images/avatar.png`;
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
