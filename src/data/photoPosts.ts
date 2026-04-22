@@ -38,6 +38,14 @@ function parseSortDate(s: string): Date {
 
 const rawPosts: PhotoPost[] = [
   {
+    id: 'apr-2026-sunny-steak',
+    title: 'Eating steak with Sunny',
+    date: 'April 22, 2026',
+    location: 'Downing College, Cambridge',
+    caption: 'Three steaks, too much oil. Played 97 Point after dinner. (2 >> 4) + (3 << 5) + 1 = 97 :-)',
+    photos: ['IMG_4790', 'IMG_4791', 'IMG_4795', 'IMG_4797'],
+  },
+  {
     id: 'apr-2026-london-dinner',
     title: 'Dinner in the city',
     date: 'April 16, 2026',
@@ -311,8 +319,8 @@ const rawPosts: PhotoPost[] = [
     id: 'jun-2024-cambridge',
     title: 'Red-brick Cambridge',
     date: 'June 14, 2024',
-    location: 'Cambridge',
-    caption: 'Wandering past Ridley Hall and the old theological quads at the end of Easter term.',
+    location: 'Girton College, Cambridge',
+    caption: 'Wandering past Girton at the end of Easter term cause I am bored.',
     photos: ['IMG_3252', 'IMG_3253'],
   },
   {
