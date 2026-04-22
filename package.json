@@ -6,12 +6,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run check-photos && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "optimize-photos": "node scripts/optimize-photos.mjs"
+    "optimize-photos": "node scripts/optimize-photos.mjs",
+    "check-photos": "node scripts/check-photos.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

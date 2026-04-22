@@ -13,10 +13,12 @@ Deployed to GitHub Pages at andyzhu23.github.io.
 
 ## Commands
 - `npm run dev` — start dev server (usually localhost:5173)
-- `npm run build` — TypeScript compile + Vite production build
+- `npm run build` — check-photos + TypeScript compile + Vite production build
 - `npm run lint` — ESLint
 - `npm run preview` — preview production build
 - `npm run deploy` — build and deploy to GitHub Pages
+- `npm run optimize-photos` — regenerate web JPGs from `photos-raw/`
+- `npm run check-photos` — validate photo refs in `src/data/photoPosts/` against `public/images/posts/`. Fails on missing refs; warns on orphans, oversized (>600 KB), and duplicates. Runs automatically as part of `build`.
 
 ## Project Structure
 ```
@@ -33,6 +35,8 @@ src/
     Blog.tsx       — placeholder with photo
     Interests.tsx  — competitive programming profiles + bridge
     Projects.tsx   — disabled but kept on disk for future use
+  data/
+    photoPosts/    — per-year photo feed entries (2023.ts, 2024.ts, ...), barrel exports concatenated+sorted array
   App.tsx          — root component with routing
   main.tsx         — entry point, clears intro-done on fresh load
   index.css        — all global styles
@@ -40,6 +44,10 @@ public/
   profile.jpg      — headshot photo (About page)
   blog-photo.jpg   — beach photo (Blog page)
   CV_Andy_Zhu.pdf  — downloadable CV (About page → Curriculum Vitae card)
+  images/posts/    — single web JPG per photo (max 1600px, quality 82). No thumbnails, no variants — single-file policy keeps git history lean.
+scripts/
+  optimize-photos.mjs — photos-raw/ → public/images/posts/ pipeline
+  check-photos.mjs    — build-time photo ref validator
 ```
 
 ## Intro Animation Sequence (DustText.tsx)

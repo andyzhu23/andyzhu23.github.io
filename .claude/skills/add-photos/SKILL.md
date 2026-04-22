@@ -1,11 +1,11 @@
 ---
 name: add-photos
-description: Process raw photos from public/images/posts/tmp/ into web JPGs and add them as entries in src/data/photoPosts.ts. Trigger when the user says things like "add photos", "process photos in tmp", "add new photos to the photos section", or drops files into public/images/posts/tmp/.
+description: Process raw photos from public/images/posts/tmp/ into web JPGs and add them as entries in src/data/photoPosts/<year>.ts. Trigger when the user says things like "add photos", "process photos in tmp", "add new photos to the photos section", or drops files into public/images/posts/tmp/.
 ---
 
 # Add photos to the photo feed
 
-Use this skill whenever the user drops raw photos into `public/images/posts/tmp/` and wants them processed into posts on the site. The workflow turns any HEIC/JPG/PNG originals into web JPGs and adds entries to `src/data/photoPosts.ts`.
+Use this skill whenever the user drops raw photos into `public/images/posts/tmp/` and wants them processed into posts on the site. The workflow turns any HEIC/JPG/PNG originals into web JPGs and adds entries to the year file under `src/data/photoPosts/`.
 
 ## Inputs you should expect
 

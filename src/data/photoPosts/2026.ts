@@ -1,0 +1,65 @@
+import type { PhotoPost } from './types';
+
+export const posts2026: PhotoPost[] = [
+  {
+    id: 'apr-2026-sunny-steak',
+    title: 'Eating steak with Sunny',
+    date: 'April 22, 2026',
+    location: 'Downing College, Cambridge',
+    caption: 'Three steaks, too much oil. Played 97 Point after dinner. (2 >> 4) + (3 << 5) + 1 = 97 :-)',
+    photos: ['IMG_4790', 'IMG_4791', 'IMG_4795', 'IMG_4797'],
+  },
+  {
+    id: 'apr-2026-london-dinner',
+    title: 'Dinner in the city',
+    date: 'April 16, 2026',
+    location: 'London',
+    caption: 'Scallops and dry-aged steaks — felt fancy.',
+    photos: ['IMG_4784', 'IMG_4782', 'IMG_4780', 'IMG_4781'],
+  },
+  {
+    id: 'apr-2026-barbican',
+    title: 'Barbican Estate',
+    date: 'April 11, 2026',
+    location: 'London',
+    caption: 'Wandering the concrete terraces and lake fountains of the Barbican — brutalist architecture at its best.',
+    photos: ['IMG_4774', 'IMG_4772', 'IMG_4765', 'IMG_4764'],
+  },
+  {
+    id: 'apr-2026-cambridge-sky',
+    title: 'Contrail sky',
+    date: 'April 2, 2026',
+    location: 'Cambridge',
+    caption: 'Evening walk on the common — the sky decided to paint itself.',
+    photos: ['IMG_4756'],
+  },
+  {
+    id: 'mar-2026-cambridge-blossoms',
+    title: 'Cherry blossom season',
+    date: 'March 21–25, 2026',
+    location: 'Selwyn College, Cambridge',
+    caption: 'Peak blossom week on the Selwyn/Newnham streets. Spring term in its prettiest form.',
+    photos: [
+      'IMG_4746', 'IMG_4743', 'IMG_4742',
+      '98d8f8fb46b97db6e05707308ed36d7e',
+      'eb81f845f93934351dc22ea47171cef1',
+      'e653173a6f4d4fa88b0e9ea1ad768bfc',
+    ],
+  },
+  {
+    id: 'feb-2026-lunar-new-year',
+    title: 'Year of the Horse',
+    date: 'February 21, 2026',
+    location: 'Cambridge',
+    caption: 'CCS Lunar New Year — couplets whose meanings are definitely not out of place.',
+    photos: ['IMG_4724'],
+  },
+  {
+    id: 'jan-2026-steak-night',
+    title: 'Steak night',
+    date: 'January 26, 2026',
+    location: 'Cambridge',
+    caption: 'Rare ribeye — a small celebration from Y-Combinator.',
+    photos: ['IMG_4708'],
+  },
+];
