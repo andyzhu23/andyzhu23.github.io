@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Background from './components/Background';
 import ParticleNetwork from './components/ParticleNetwork';
 import Navbar from './components/Navbar';
@@ -10,12 +11,24 @@ import Photos from './pages/Photos';
 import Interests from './pages/Interests';
 import Projects from './pages/Projects';
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <>
       <Background />
       <ParticleNetwork />
       <Navbar />
+      <ScrollToTop />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Home />} />

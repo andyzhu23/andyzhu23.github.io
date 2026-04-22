@@ -87,7 +87,7 @@ const rawPosts: PhotoPost[] = [
     title: 'Steak night',
     date: 'January 26, 2026',
     location: 'Cambridge',
-    caption: 'Rare ribeye and scallops — a small celebration.',
+    caption: 'Rare ribeye — a small celebration from Y-Combinator.',
     photos: ['IMG_4708'],
   },
   {
