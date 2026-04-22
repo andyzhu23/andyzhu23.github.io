@@ -73,7 +73,7 @@ const rawPosts: PhotoPost[] = [
     id: 'mar-2026-cambridge-blossoms',
     title: 'Cherry blossom season',
     date: 'March 21–25, 2026',
-    location: 'Cambridge',
+    location: 'Selwyn College, Cambridge',
     caption: 'Peak blossom week on the Selwyn/Newnham streets. Spring term in its prettiest form.',
     photos: [
       'IMG_4746', 'IMG_4743', 'IMG_4742',
@@ -87,7 +87,7 @@ const rawPosts: PhotoPost[] = [
     title: 'Year of the Horse',
     date: 'February 21, 2026',
     location: 'Cambridge',
-    caption: 'CCS Lunar New Year — couplets and red lanterns.',
+    caption: 'CCS Lunar New Year — couplets whose meanings are definitely not out of place.',
     photos: ['IMG_4724'],
   },
   {
@@ -212,7 +212,7 @@ const rawPosts: PhotoPost[] = [
     id: 'jul-2025-cambridge',
     title: 'Summer in Meta',
     date: 'July 25, 2025',
-    location: 'Cambridge',
+    location: 'London',
     caption: 'Empty roof gardon at Meta on a chill Friday.',
     photos: ['IMG_4244'],
   },
