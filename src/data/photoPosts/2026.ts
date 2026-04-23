@@ -14,7 +14,7 @@ export const posts2026: PhotoPost[] = [
     title: 'Dinner in the city',
     date: 'April 16, 2026',
     location: 'London',
-    caption: 'Scallops and dry-aged steaks — felt fancy.',
+    caption: 'Scallops and dry-aged steaks — felt fancy thanks to my college ancestor.',
     photos: ['IMG_4784', 'IMG_4782', 'IMG_4780', 'IMG_4781'],
   },
   {
