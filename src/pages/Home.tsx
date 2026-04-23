@@ -71,7 +71,7 @@ export default function Home() {
         <div className={`home-socials ${animDone ? 'visible' : ''}`}>
           <a href="https://github.com/andyzhu23" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a>
           <a href="https://www.linkedin.com/in/andy-zhu-92409323b" target="_blank" rel="noopener noreferrer" title="LinkedIn">LinkedIn</a>
-          <a href="https://open.spotify.com/user/andy_zhu23" target="_blank" rel="noopener noreferrer" title="Spotify">Spotify</a>
+          <a href="https://open.spotify.com/user/af656qa2tldyvmid9sbdzh9w2?si=b5521cb5445843bc" target="_blank" rel="noopener noreferrer" title="Spotify">Spotify</a>
           <a href="https://www.instagram.com/littlenotorzzie" target="_blank" rel="noopener noreferrer" title="Instagram">Instagram</a>
           <a href="mailto:andy.zheyuan.zhu@gmail.com" title="Email">Email</a>
         </div>

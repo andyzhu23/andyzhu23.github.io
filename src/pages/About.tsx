@@ -84,7 +84,7 @@ export default function About() {
             <a href="mailto:andy.zheyuan.zhu@gmail.com" className="link-chip">Email ↗</a>
             <a href="https://github.com/andyzhu23" target="_blank" rel="noopener noreferrer" className="link-chip">GitHub ↗</a>
             <a href="https://www.linkedin.com/in/andy-zhu-92409323b" target="_blank" rel="noopener noreferrer" className="link-chip">LinkedIn ↗</a>
-            <a href="https://open.spotify.com/user/andy_zhu23" target="_blank" rel="noopener noreferrer" className="link-chip">Spotify ↗</a>
+            <a href="https://open.spotify.com/user/af656qa2tldyvmid9sbdzh9w2?si=b5521cb5445843bc" target="_blank" rel="noopener noreferrer" className="link-chip">Spotify ↗</a>
             <a href="https://www.instagram.com/littlenotorzzie" target="_blank" rel="noopener noreferrer" className="link-chip">Instagram ↗</a>
             <span className="link-chip discord-chip">Discord: Wizard_of_Orz</span>
           </div>
