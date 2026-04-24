@@ -9,6 +9,7 @@ Deployed to GitHub Pages at andyzhu23.github.io.
 - Vite 6 (dev server & build)
 - React Router v7 (multi-page routing)
 - Plain CSS (no frameworks)
+- KaTeX for blog math rendering (imported once in main.tsx)
 - gh-pages for deployment
 
 ## Commands
@@ -24,27 +25,40 @@ Deployed to GitHub Pages at andyzhu23.github.io.
 ```
 src/
   components/
-    Background.tsx — interactive elliptic curve (y²=x³-x+1) canvas background
-    DustText.tsx   — Ultraman Nexus-style intro animation (explosion, lasers, DNA helix, title reveal)
-    Navbar.tsx     — fixed top navigation with mobile hamburger menu
-    Footer.tsx     — simple copyright footer
+    Background.tsx       — interactive elliptic curve (y²=x³-x+1) canvas background
+    ParticleNetwork.tsx  — ambient dust particles floating over the page
+    DustText.tsx         — Ultraman Nexus-style intro animation (explosion, lasers, DNA helix, title reveal)
+    Navbar.tsx           — fixed top navigation with mobile hamburger menu
+    Footer.tsx           — simple copyright footer
+    PhotoPost.tsx        — single photo-feed entry, lazy-loads via IntersectionObserver
+    PhotoCarousel.tsx    — swipeable multi-photo carousel used inside PhotoPost
+    Math.tsx             — <InlineMath/> and <BlockMath/> wrappers around KaTeX (for blog posts)
   pages/
     Home.tsx       — landing page with intro animation + social links
     About.tsx      — bio, photo, education, skills, connect links
     Experience.tsx — professional experience timeline (Jump Trading, Meta, Man Group)
-    Blog.tsx       — placeholder with photo
+    Photos.tsx     — photo feed ("Instagram-style") rendered from photoPosts data
     Interests.tsx  — competitive programming profiles + bridge
-    Projects.tsx   — disabled but kept on disk for future use
+    Projects.tsx   — projects showcase
+    Blog.tsx       — blog index listing entries in src/data/blogPosts
+    BlogPost.tsx   — individual post page, routed by slug via /blog/:slug
   data/
     photoPosts/    — per-year photo feed entries (2023.ts, 2024.ts, ...), barrel exports concatenated+sorted array
+    blogPosts/     — one TSX file per post exporting { meta, default Component }, aggregated+sorted in index.ts
   App.tsx          — root component with routing
   main.tsx         — entry point, clears intro-done on fresh load
   index.css        — all global styles
 public/
-  profile.jpg      — headshot photo (About page)
-  blog-photo.jpg   — beach photo (Blog page)
-  CV_Andy_Zhu.pdf  — downloadable CV (About page → Curriculum Vitae card)
-  images/posts/    — single web JPG per photo (max 1600px, quality 82). No thumbnails, no variants — single-file policy keeps git history lean.
+  404.html              — GitHub Pages SPA fallback
+  favicon.svg           — site favicon
+  CV_Andy_Zhu.pdf       — downloadable CV (About page → Curriculum Vitae card)
+  images/
+    profile.jpg         — headshot photo (About page)
+    avatar.png          — avatar used in photo feed posts
+    blog-photo.jpg      — legacy photo asset
+    photos-hero.jpg     — hero image at top of Photos page
+    朱哲远.png            — Chinese-name graphic asset
+    posts/              — single web JPG per photo (max 1600px, quality 82). No thumbnails, no variants — single-file policy keeps git history lean.
 scripts/
   optimize-photos.mjs — photos-raw/ → public/images/posts/ pipeline
   check-photos.mjs    — build-time photo ref validator
