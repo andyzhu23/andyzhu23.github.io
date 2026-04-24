@@ -6,7 +6,7 @@ export const meta: BlogPostMeta = {
   title: 'FRI: fast low-degree testing by recursive folding',
   date: 'April 24, 2026',
   description:
-    'How a clever split of a polynomial into its even and odd parts lets a verifier check degree in O(log d) queries — the recursive trick behind modern STARKs.',
+    'How a clever split of a polynomial into its even and odd parts lets a verifier check degree in logarithmic queries — the recursive trick behind modern STARKs.',
   tags: ['cryptography', 'math', 'zk-proofs'],
   readingMinutes: 7,
 };
