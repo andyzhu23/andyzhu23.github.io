@@ -105,6 +105,16 @@ export default function EllipticCurvesPost() {
         scaled up to a 256-bit prime field, is deciding right now whether a stranger
         can spend your money.
       </p>
+
+      <h2>References</h2>
+      <ul>
+        <li>
+          <a href="https://www.cl.cam.ac.uk/teaching/2526/Crypto/" target="_blank" rel="noopener noreferrer">
+            Cryptography (Part II)
+          </a>
+          {' '}— University of Cambridge, 2025–26.
+        </li>
+      </ul>
     </article>
   );
 }
