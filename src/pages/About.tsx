@@ -6,7 +6,7 @@ export default function About() {
   };
 
   const courses = [
-    'Digital Signal Processing', 'Machine Learning & Bayesian Inference', 'Deep Neural Networks', 'Compiler', 'Concurrent & Distributed Systems', 'Operating System', 'Databases', 'Data Science', 'Computer Networking', 'Computer Architecture', 'Algorithms',  'Cybersecurity', 'Cryptography', 'Quantum Computing', 'Bioinformatics', 'Information Theory', 'Complexity Theory', 'Programming Language Theory'
+    'Digital Signal Processing', 'Machine Learning & Bayesian Inference', 'Deep Neural Networks', 'Compiler', 'Concurrent & Distributed Systems', 'Operating Systems', 'Databases', 'Data Science', 'Computer Networking', 'Computer Architecture', 'Algorithms',  'Cybersecurity', 'Cryptography', 'Quantum Computing', 'Bioinformatics', 'Information Theory', 'Complexity Theory', 'Programming Language Theory'
   ];
 
   return (
