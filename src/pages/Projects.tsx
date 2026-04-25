@@ -1,9 +1,17 @@
-const projects = [
+import type { ReactNode } from 'react';
+
+const projects: {
+  title: string;
+  date: string;
+  description: string;
+  url?: string;
+  points: ReactNode[];
+  tags: string[];
+}[] = [
   {
     title: 'Implementation of Gap Amplification',
     date: 'October 2025 - May 2026',
     description: 'Studied and implemented Gap Amplification construction used in Dinur\'s proof of the PCP theorem.',
-    url: undefined as string | undefined,
     points: [
       'Implemented efficient construction for Constraint Satisfaction Problem (CSP) in C++',
       'Studied various error-correcting codes (Hadamard code and Reed-Muller code) used in PCP of Proximity constructions',
@@ -21,7 +29,7 @@ const projects = [
       'Focused on backend, built objects simulating various mechanical components with TypeScript',
       'Praised as the most impressive professional achievement out of 20 projects by the Cambridge Department of Computer Science and Technology',
       'Runner-up for the most impressive technical achievement',
-      'Featured on the IEEE Annals of the History of Computing',
+      <>Featured on the <a href="https://ieeexplore.ieee.org/document/11304149" target="_blank" rel="noopener noreferrer">IEEE Annals of the History of Computing ↗</a></>,
     ],
     tags: ['TypeScript', 'Simulation', 'Team Project'],
   },
