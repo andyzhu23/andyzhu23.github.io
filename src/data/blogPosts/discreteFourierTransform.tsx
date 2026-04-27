@@ -129,24 +129,76 @@ export default function DiscreteFourierTransformPost() {
       </p>
 
       <h2>Applications in the real world</h2>
+      <h3>Image compression.</h3>
       <p>
-        <strong>Image compression.</strong> JPEG runs a 2-D <em>Discrete Cosine Transform</em> on each <InlineMath tex="8 \times 8"/> block of pixels. Most of the energy in a natural image lives in the low-frequency coefficients, so the high-frequency ones can be quantised aggressively (or zeroed out entirely) with little visual loss. That single observation is the core of every JPEG you have ever opened.
+        JPEG runs a 2-D <em>Discrete Cosine Transform</em> on each <InlineMath tex="8 \times 8"/> block of pixels. The forward and inverse 1-D DCT on a length-<InlineMath tex="N"/> signal are
+      </p>
+      <BlockMath tex="\begin{aligned}
+      S_u &= \frac{C_u}{\sqrt{N/2}} \sum_{x=0}^{N-1} s_x \cos \frac{(2x+1)u\pi}{2N}, \\
+      s_x &= \sum_{u=0}^{N-1} \frac{C_u}{\sqrt{N/2}}\, S_u \cos \frac{(2x+1)u\pi}{2N},
+      \end{aligned}"/>
+      <p>
+        with the normalisation factor
+      </p>
+      <BlockMath tex="C_u = \begin{cases} \tfrac{1}{\sqrt{2}} & u = 0, \\ 1 & u > 0. \end{cases}"/>
+      <p>
+        Human eyes are a lot more sensitive to low frequencies than to high frequencies. After the DCT is applied to a block, each cell is quantised by dividing by a quantisation factor that is larger for higher frequencies, so that many of the high-frequency cells become zero and can be efficiently compressed with run-length encoding when stored in a zig-zag pattern from the top-left corner. The DCT is basically the same as the DFT but with real-valued cosine probes instead of complex exponentials, and it also has a fast algorithm like the FFT. Often an image can be reduced by 90% in size with barely any perceptible loss in quality, just by throwing away the high-frequency DCT coefficients.
       </p>
       <p>
-        <strong>State Space Models.</strong> A state space model (SSM) is an architecture under recurrent neural networks (RNN). 
+        Another example in image processing is deblurring an image by deconvolving it with the blur kernel in the frequency domain. Blurring an image can often be modelled as a convolution of the original image with a blur kernel, so by the convolution theorem we can undo the blur by dividing the DFT of the blurred image by the DFT of the kernel, and then inverse-DFT back to get the deblurred image. This is a common technique in computational photography, but the practical details are a bit more complicated — there is the need for a window function to avoid frequency leakage, and the fact that the kernel's DFT may have small values that cause numerical instability when dividing.
+      </p>
+      <h3>State Space Models.</h3> 
+      <p>
+        A state space model (SSM) is an architecture in the recurrent neural network (RNN) family.
         Continuous SSMs are written as</p>
           <BlockMath tex="\begin{aligned}
           h'(t) &= A h(t) + B x(t), \\
           y(t) &= C h(t) + D x(t),
           \end{aligned}"/>
         <p>
-        where <InlineMath tex="h'(t)"/> is the derivative of the hidden state and <InlineMath tex="y(t)"/> is the output, and <InlineMath tex="A, B, C, D"/> are matrices. Discretising with a step size of 1 gives the discrete SSM:
+        where <InlineMath tex="h'(t)"/> is the derivative of the hidden state, <InlineMath tex="y(t)"/> is the output, and <InlineMath tex="A, B, C, D"/> are matrices. The <InlineMath tex="D x(t)"/> term is just a feedthrough — in deep-learning land it is a skip / residual connection wrapped around the block, so when people talk about "the SSM" they typically mean the part that maps <InlineMath tex="x \mapsto y"/> through the hidden state, with <InlineMath tex="D x"/> added back on top by the surrounding <em>ResNet</em> wiring. We will drop it here and bring it back at the end.
+      </p>
+      <p>
+        To run the rest on a computer we sample at times <InlineMath tex="t_n = n\Delta"/> and need a recurrence that steps from <InlineMath tex="h_n := h(t_n)"/> to <InlineMath tex="h_{n+1}"/>. Following S4 we use the <em>bilinear</em> (Tustin) method: apply the trapezoidal rule to the state ODE. Honestly carried out, that says
+      </p>
+      <BlockMath tex="h_{n+1} - h_n \;\approx\; \tfrac{\Delta}{2}\big(h'(t_n) + h'(t_{n+1})\big) \;=\; \tfrac{\Delta}{2}\big(A h_n + A h_{n+1}\big) + \tfrac{\Delta}{2}\big(B x_n + B x_{n+1}\big),"/>
+      <p>
+        using <InlineMath tex="h'(t_n) = A h_n + B x_n"/> on each endpoint. To get a usable one-step recurrence we still need to handle the future input <InlineMath tex="x_{n+1}"/>, and the standard fix is to assume the input is held constant across the sample interval, <InlineMath tex="x_{n+1} = x_n"/>. The two <InlineMath tex="B x"/> terms collapse into a single <InlineMath tex="\Delta B x_n"/>, and collecting <InlineMath tex="h_{n+1}"/> on the left gives <InlineMath tex="(I - \tfrac{\Delta}{2} A) h_{n+1} = (I + \tfrac{\Delta}{2} A) h_n + \Delta B x_n"/>, so the discrete SSM is
       </p>
       <BlockMath tex="\begin{aligned}
-      h_{n+1} &= A h_n + B x_n, \\
-      y_n &= C h_n + D x_n.
+      h_{n+1} &= \bar A\, h_n + \bar B\, x_n, \\
+      y_n &= \bar C\, h_n,
       \end{aligned}"/>
       <p>
+        with
+      </p>
+      <BlockMath tex="\bar A = \big(I - \tfrac{\Delta}{2} A\big)^{-1}\!\big(I + \tfrac{\Delta}{2} A\big), \qquad \bar B = \big(I - \tfrac{\Delta}{2} A\big)^{-1} \Delta B, \qquad \bar C = C."/>
+      <p>
+        The continuous generator <InlineMath tex="A"/> has units of inverse time and is <em>not</em> the same matrix as the dimensionless one-step propagator <InlineMath tex="\bar A"/>; they only agree to first order in <InlineMath tex="\Delta"/>. What we now have is a sequence-to-sequence map <InlineMath tex="x_n \mapsto y_n"/> that looks exactly like a linear RNN, with <InlineMath tex="\bar A"/> as the transition matrix on the hidden state.
+      </p>
+      <p>
+        Unrolling from <InlineMath tex="h_0 = 0"/>, each step the old state gets multiplied by <InlineMath tex="\bar A"/> and a fresh <InlineMath tex="\bar B x_k"/> contribution is added on:
+      </p>
+      <BlockMath tex="\begin{aligned}
+      h_1 &= \bar B\, x_0, \\
+      h_2 &= \bar A\, \bar B\, x_0 + \bar B\, x_1, \\
+      h_3 &= \bar A^2\, \bar B\, x_0 + \bar A\, \bar B\, x_1 + \bar B\, x_2, \\
+      &\;\;\vdots \\
+      h_n &= \sum_{k=0}^{n-1} \bar A^{\,n-1-k}\, \bar B\, x_k.
+      \end{aligned}"/>
+      <p>
+        Intuitively, the input <InlineMath tex="x_k"/> enters the state at step <InlineMath tex="k"/> through <InlineMath tex="\bar B"/> and then decays through <InlineMath tex="n - 1 - k"/> applications of <InlineMath tex="\bar A"/> by the time we read it out at step <InlineMath tex="n"/>. The output is then
+      </p>
+      <BlockMath tex="y_n = \sum_{k=0}^{n-1} \big(\bar C\, \bar A^{\,n-1-k}\, \bar B\big)\, x_k = (K * x)_n,"/>
+      <p>
+        where the <em>SSM kernel</em> is <InlineMath tex="K_n = \bar C\, \bar A^{\,n-1}\, \bar B"/> for <InlineMath tex="n \ge 1"/>. The earlier <InlineMath tex="D x_n"/> feedthrough re-enters as a residual stream around this convolution, exactly as in any <em>ResNet</em> block. So the entire sequence-to-sequence map of a linear time-invariant SSM is a single convolution of the input against one fixed kernel — the recurrent form and the convolutional form are two views of the same operator.
+      </p>
+      <p>
+        This is where the convolution theorem earns its keep. The recurrence is inherently sequential: you cannot compute <InlineMath tex="h_{n+1}"/> until <InlineMath tex="h_n"/> is done, which wastes the parallelism a GPU is built for. Naive convolution is <InlineMath tex="O(L^2)"/> in the sequence length <InlineMath tex="L"/> — the same ballpark as a <em>transformer's attention</em>. FFT-based convolution drops it to <InlineMath tex="O(L \log L)"/> with every stage trivially parallel. So during training you precompute <InlineMath tex="K"/>, FFT both <InlineMath tex="K"/> and <InlineMath tex="x"/>, multiply pointwise, inverse-FFT back; at inference you switch to the recurrence and pay <InlineMath tex="O(d^2)"/> per step with no growing KV cache. That duality is what makes modern long-context SSMs like S4 and the Mamba lineage tractable.
+      </p>
+      <h3>Quantum Fourier Transform</h3>
+      <p>
+        The quantum Fourier transform (QFT) is the quantum analogue of the classical discrete Fourier transform, operating on quantum states. The inverse QFT is used as the second step in quantum phase estimation (QPE), which is a key subroutine both in Shor's famous algorithm for integer factorisation and in simulating quantum chemistry. The QFT is worth its own blog post in the future.
       </p>
 
       <h2>References</h2>
