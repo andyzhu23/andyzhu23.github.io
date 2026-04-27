@@ -1,3 +1,5 @@
+import CpRatingWidget from '../components/CpRatingWidget';
+
 const cpProfiles = [
   { name: 'Codeforces', url: 'https://codeforces.com/profile/Wizard_of_Orz' },
   { name: 'LeetCode', url: 'https://leetcode.com/u/Wizard_of_Orz/' },
@@ -27,6 +29,7 @@ export default function Interests() {
           the society's finances.
         </p>
         <h3>Profiles</h3>
+        <CpRatingWidget />
         <div className="link-list">
           {cpProfiles.map(p => (
             <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" className="link-chip">
@@ -48,8 +51,8 @@ export default function Interests() {
         <h2>Bridge</h2>
         <p>
           I enjoy playing contract bridge. I play regularly on Bridge Base Online and love
-          the strategic depth of bidding conventions and card play. 
-          
+          the strategic depth of bidding conventions and card play.
+
           I was on the committee of the Cambridge University Bridge Club in 2025-26 as president.
         </p>
       </section>

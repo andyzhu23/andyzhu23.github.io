@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { findBlogPost } from '../data/blogPosts';
+import GiscusComments from '../components/GiscusComments';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -31,6 +32,7 @@ export default function BlogPost() {
         </div>
       </header>
       <Component />
+      <GiscusComments />
     </div>
   );
 }
