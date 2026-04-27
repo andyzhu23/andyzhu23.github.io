@@ -129,7 +129,11 @@ export default function DiscreteFourierTransformPost() {
       </p>
 
       <h2>Applications in the real world</h2>
-      <h3>Image compression.</h3>
+      <h3>Audio processing</h3>
+      <p>
+        The most classic application of the DFT is in audio processing. The DFT can be used to build filters that remove certain frequencies while amplifying others. A more efficient way to build a filter, however, is to use the Z-transform, a generalisation of the DFT that allows for non-uniform sampling and complex frequencies, which will be covered in a future blog post!
+      </p>
+      <h3>Image compression</h3>
       <p>
         JPEG runs a 2-D <em>Discrete Cosine Transform</em> on each <InlineMath tex="8 \times 8"/> block of pixels. The forward and inverse 1-D DCT on a length-<InlineMath tex="N"/> signal are
       </p>
@@ -147,7 +151,11 @@ export default function DiscreteFourierTransformPost() {
       <p>
         Another example in image processing is deblurring an image by deconvolving it with the blur kernel in the frequency domain. Blurring an image can often be modelled as a convolution of the original image with a blur kernel, so by the convolution theorem we can undo the blur by dividing the DFT of the blurred image by the DFT of the kernel, and then inverse-DFT back to get the deblurred image. This is a common technique in computational photography, but the practical details are a bit more complicated — there is the need for a window function to avoid frequency leakage, and the fact that the kernel's DFT may have small values that cause numerical instability when dividing.
       </p>
-      <h3>State Space Models.</h3> 
+      <h3>Cryptography</h3>
+      <p>
+        The number-theoretic transform can be used to efficiently multiply polynomials over finite fields, which is a key operation in some post-quantum cryptographic schemes. The general DFT can also speed up multiplication of large integers by treating them as polynomials in a base and using the convolution theorem. This is used in some implementations of RSA and other cryptosystems to speed up key generation and encryption/decryption operations.
+      </p>
+      <h3>State Space Models</h3> 
       <p>
         A state space model (SSM) is an architecture in the recurrent neural network (RNN) family.
         Continuous SSMs are written as</p>
