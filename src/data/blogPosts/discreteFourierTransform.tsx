@@ -73,6 +73,9 @@ export default function DiscreteFourierTransformPost() {
       <p>
         So one length-<InlineMath tex="N/2"/> DFT of the even-indexed samples, plus one length-<InlineMath tex="N/2"/> DFT of the odd-indexed samples, plus a linear-time combine, gives the entire length-<InlineMath tex="N"/> DFT. The recurrence <InlineMath tex="T(N) = 2T(N/2) + O(N)"/> resolves to <InlineMath tex="O(N \log N)"/>.
       </p>
+      <p>
+        The recursion bottoms out at <InlineMath tex="N = 1"/>. A length-<InlineMath tex="1"/> DFT only ever evaluates one probe at <InlineMath tex="k = 0"/>, and that probe is <InlineMath tex="e^{-2\pi i \cdot 0 \cdot 0 / 1} = 1"/>, so the sum collapses to <InlineMath tex="X_0 = x_0"/> — the transform of a single sample is the sample itself. From there the butterflies climb back up, doubling the transform length at each level until they reassemble the full length-<InlineMath tex="N"/> output.
+      </p>
 
       <h2>The number-theoretic transform</h2>
       <p>
