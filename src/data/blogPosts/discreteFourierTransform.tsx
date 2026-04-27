@@ -209,7 +209,7 @@ export default function DiscreteFourierTransformPost() {
       </p>
       <h3>Quantum Fourier Transform</h3>
       <p>
-        The quantum Fourier transform (QFT) is the quantum analogue of the classical discrete Fourier transform, operating on quantum states. The inverse QFT is used as the second step in quantum phase estimation (QPE), which is a key subroutine both in Shor's famous algorithm for integer factorisation and in simulating quantum chemistry. The QFT is worth its own blog post in the future.
+        The quantum Fourier transform (QFT) is the <em>quantum analogue</em> of the classical discrete Fourier transform, operating on <em>quantum states</em>. The inverse QFT is used as the second step in <em>quantum phase estimation</em> (QPE), which is a key subroutine both in <strong>Shor's famous algorithm for integer factorisation</strong> and in <em>simulating quantum chemistry</em>. The QFT is worth its own blog post in the future.
       </p>
 
       <h2>References</h2>
