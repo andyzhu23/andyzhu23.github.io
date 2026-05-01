@@ -2,6 +2,14 @@ import type { PhotoPost } from './types';
 
 export const posts2026: PhotoPost[] = [
   {
+    id: 'apr-2026-moonrise',
+    title: 'Moonrise',
+    date: 'April 30, 2026',
+    location: 'London',
+    caption: '明月几时有？把酒问青天。不知天上宫阙，今夕是何年？',
+    photos: ['631', '633'],
+  },
+  {
     id: 'apr-2026-sunny-steak',
     title: 'Eating steak with Sunny',
     date: 'April 22, 2026',
