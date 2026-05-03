@@ -138,7 +138,7 @@ export default function DiscreteFourierTransformPost() {
       </p>
       <h3>Image compression</h3>
       <p>
-        JPEG runs a 2-D <em>Discrete Cosine Transform</em> on each <InlineMath tex="8 \times 8"/> block of pixels. The forward and inverse 1-D DCT on a length-<InlineMath tex="N"/> signal are
+        JPEG runs a 2-D <em>Discrete Cosine Transform</em> on each <InlineMath tex="8 \times 8"/> block of pixels. The image is first converted from RGB to <em>YCbCr</em> — one <em>luminance</em> channel and two <em>chrominance</em> channels — because the human visual system is far more sensitive to brightness than to colour, so the two chrominance channels can be <em>downsampled</em> before any further processing. The 2-D DCT itself is <em>separable</em>: it is just the 1-D DCT applied along the rows and then along the columns. The forward and inverse 1-D DCT on a length-<InlineMath tex="N"/> signal are
       </p>
       <BlockMath tex="\begin{aligned}
       S_u &= \frac{C_u}{\sqrt{N/2}} \sum_{x=0}^{N-1} s_x \cos \frac{(2x+1)u\pi}{2N}, \\
