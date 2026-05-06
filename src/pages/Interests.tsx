@@ -58,6 +58,13 @@ export default function Interests() {
       </section>
 
       <section className="interest-section card">
+        <h2>Violin</h2>
+        <p>
+          I was forced to learn an instrument as a kid by my parents like many others, and I ended up with the violin. Pretty much retired from playing now.
+        </p>
+      </section>
+
+      <section className="interest-section card">
         <h2>Super Smash Bros Ultimate</h2>
         <p>
           I used to grind smash back in the day. Lucina main, I secondary Mr. Game & Watch and King K. Rool.
