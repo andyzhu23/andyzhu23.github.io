@@ -87,8 +87,36 @@ export default function DiscreteFourierTransformPost() {
 
       <h2>The convolution theorem</h2>
       <p>
-        The discrete convolution of two sequences <InlineMath tex="a_n"/> and <InlineMath tex="b_n"/> is defined as <InlineMath tex="c_k = \sum_{i + j = k} a_i\, b_j"/>. Computing it naively is <InlineMath tex="O(N^2)"/>; the DFT brings it down to <InlineMath tex="O(N \log N)"/> via the <strong>convolution theorem</strong>: <strong>the DFT turns convolution into pointwise multiplication</strong>. More precisely, if <InlineMath tex="A_k"/> and <InlineMath tex="B_k"/> are the DFTs of <InlineMath tex="a_n"/> and <InlineMath tex="b_n"/>, then the DFT of their convolution is the pointwise product <InlineMath tex="C_k = A_k B_k"/> — a one-line algebraic check. So to compute the convolution: FFT both sequences, multiply pointwise, and inverse-FFT back.
+        The discrete convolution of two sequences <InlineMath tex="a_n"/> and <InlineMath tex="b_n"/> is defined as <InlineMath tex="c_k = \sum_{n} a_n\, b_{k-n}"/>. Computing it naively is <InlineMath tex="O(N^2)"/>; the DFT brings it down to <InlineMath tex="O(N \log N)"/> via the <strong>convolution theorem</strong>: <strong>the DFT turns convolution into pointwise multiplication</strong>. More precisely, if <InlineMath tex="A_k"/> and <InlineMath tex="B_k"/> are the DFTs of <InlineMath tex="a_n"/> and <InlineMath tex="b_n"/>, then the DFT of their convolution is the pointwise product <InlineMath tex="C_k = A_k B_k"/>. So to compute the convolution: FFT both sequences, multiply pointwise, and inverse-FFT back.
       </p>
+      <p>
+        The algebraic proof is usually given in the continuous case, but here I will do it directly in the discrete case. One subtlety first: the DFT actually computes <em>cyclic</em> convolution, so throughout this proof indices on <InlineMath tex="b"/> are taken mod <InlineMath tex="N"/>. (For ordinary linear convolution, just zero-pad both sequences to length <InlineMath tex="\geq 2N - 1"/> first; the cyclic convolution of the padded sequences agrees with the linear convolution.) Writing the convolution and DFTs out:
+      </p>
+
+      <BlockMath tex="c_m \;=\; \sum_{n=0}^{N-1} a_n\, b_{m-n}, \qquad A_k \;=\; \sum_{n=0}^{N-1} a_n\, e^{-2\pi i kn/N}, \qquad B_k \;=\; \sum_{n=0}^{N-1} b_n\, e^{-2\pi i kn/N}."/>
+
+      <p>
+        Now compute the DFT of <InlineMath tex="c"/>, swapping the order of summation and splitting the exponential <InlineMath tex="e^{-2\pi i km/N} = e^{-2\pi i kn/N}\, e^{-2\pi i k(m-n)/N}"/>:
+      </p>
+
+      <BlockMath tex="\begin{aligned}
+        C_k &= \sum_{m=0}^{N-1} c_m\, e^{-2\pi i km / N} \\
+        &= \sum_{m=0}^{N-1} \sum_{n=0}^{N-1} a_n\, b_{m-n}\, e^{-2\pi i km / N} \\
+        &= \sum_{n=0}^{N-1} \sum_{m=0}^{N-1} a_n\, b_{m-n}\, e^{-2\pi i kn / N}\, e^{-2\pi i k(m-n) / N} \\
+        &= \sum_{n=0}^{N-1} a_n\, e^{-2\pi i kn / N} \left( \sum_{m=0}^{N-1} b_{m-n}\, e^{-2\pi i k(m-n) / N} \right).
+      \end{aligned}"/>
+
+      <p>
+        For the inner sum, substitute <InlineMath tex="\ell = m - n \pmod N"/>. As <InlineMath tex="m"/> runs over <InlineMath tex="0, 1, \ldots, N-1"/>, so does <InlineMath tex="\ell"/>, just in a cyclically shifted order — and because both <InlineMath tex="b_\ell"/> and <InlineMath tex="e^{-2\pi i k\ell/N}"/> are <InlineMath tex="N"/>-periodic in <InlineMath tex="\ell"/>, the sum is unchanged by that shift:
+      </p>
+
+      <BlockMath tex="\sum_{m=0}^{N-1} b_{m-n}\, e^{-2\pi i k(m-n) / N} \;=\; \sum_{\ell=0}^{N-1} b_\ell\, e^{-2\pi i k\ell / N} \;=\; B_k."/>
+
+      <p>
+        This factor no longer depends on <InlineMath tex="n"/>, so it pulls out of the outer sum:
+      </p>
+
+      <BlockMath tex="C_k \;=\; \left( \sum_{n=0}^{N-1} a_n\, e^{-2\pi i kn / N} \right) B_k \;=\; A_k\, B_k. \qquad \blacksquare"/>
 
       <h2>Applications in competitive programming</h2>
       <p>
