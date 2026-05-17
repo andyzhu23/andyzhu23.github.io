@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Andy Zhu&apos;s blog</title>
+  <link href="https://andyzhu23.github.io/blog" />
+  <link href="https://andyzhu23.github.io/atom.xml" rel="self" type="application/atom+xml" />
+  <id>https://andyzhu23.github.io/</id>
+  <updated>2026-04-27T12:00:00.000Z</updated>
+  <author><name>Andy Zhu</name></author>
+  <subtitle>Notes on cryptography, algorithms, math, and other things I find interesting.</subtitle>
+  <entry>
+    <title>The Discrete Fourier Transform</title>
+    <link href="https://andyzhu23.github.io/blog/discrete-fourier-transform" />
+    <id>https://andyzhu23.github.io/blog/discrete-fourier-transform</id>
+    <updated>2026-04-27T12:00:00.000Z</updated>
+    <published>2026-04-27T12:00:00.000Z</published>
+    <summary>From continuous frequencies to roots of unity — how the DFT, FFT, and NTT turn O(n²) convolutions into O(n log n), with applications in competitive programming and the real world.</summary>
+    <category term="math" />
+    <category term="algorithms" />
+    <category term="signal-processing" />
+  </entry>
+  <entry>
+    <title>The elliptic curve on my homepage, demystified</title>
+    <link href="https://andyzhu23.github.io/blog/elliptic-curve-on-my-homepage" />
+    <id>https://andyzhu23.github.io/blog/elliptic-curve-on-my-homepage</id>
+    <updated>2026-04-24T12:00:00.000Z</updated>
+    <published>2026-04-24T12:00:00.000Z</published>
+    <summary>What the animated curve behind every page is actually computing — and why the same operation secures half the internet.</summary>
+    <category term="cryptography" />
+    <category term="math" />
+    <category term="canvas" />
+  </entry>
+  <entry>
+    <title>FRI: fast low-degree testing by recursive folding</title>
+    <link href="https://andyzhu23.github.io/blog/fri-low-degree-test" />
+    <id>https://andyzhu23.github.io/blog/fri-low-degree-test</id>
+    <updated>2026-04-24T12:00:00.000Z</updated>
+    <published>2026-04-24T12:00:00.000Z</published>
+    <summary>How a clever split of a polynomial into its even and odd parts lets a verifier check degree in logarithmic queries — the recursive trick behind modern STARKs.</summary>
+    <category term="cryptography" />
+    <category term="math" />
+    <category term="zk-proofs" />
+  </entry>
+</feed>
