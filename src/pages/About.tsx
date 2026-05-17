@@ -1,3 +1,5 @@
+import SEO from '../components/SEO';
+
 export default function About() {
   const skills = {
     'Languages': ['C++', 'Python', 'Java', 'Go', 'Julia', 'SQL', 'OCaml', 'PHP', 'Prolog'],
@@ -11,6 +13,11 @@ export default function About() {
 
   return (
     <div className="page about-page">
+      <SEO
+        title="About"
+        description="Final-year Computer Science student at Cambridge (Selwyn College), graduating July 2026. Background, skills, and coursework."
+        path="/about"
+      />
       <h1 className="page-title">About Me</h1>
       <div className="about-grid">
         <section className="about-bio card">

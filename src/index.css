@@ -702,11 +702,49 @@ body.intro-done .navbar {
 }
 
 /* ===== Blog ===== */
+.blog-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rss-subscribe {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  color: var(--accent);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.rss-subscribe:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
 .blog-intro {
   color: var(--text-muted);
   max-width: 700px;
   line-height: 1.7;
   margin-bottom: 2.5rem;
+}
+
+.blog-intro a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+
+.blog-intro a:hover {
+  border-bottom-style: solid;
 }
 
 .blog-index {

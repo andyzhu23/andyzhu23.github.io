@@ -1,3 +1,5 @@
+import SEO from '../components/SEO';
+
 const experiences = [
   {
     company: 'Jump Trading',
@@ -33,6 +35,11 @@ const experiences = [
 export default function Experience() {
   return (
     <div className="page experience-page">
+      <SEO
+        title="Experience"
+        description="Software engineering experience: Jump Trading (incoming), Meta, and Man Group internships in London."
+        path="/experience"
+      />
       <h1 className="page-title">Experience</h1>
       <div className="timeline">
         {experiences.map((exp, i) => (

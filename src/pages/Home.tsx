@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import DustText from '../components/DustText';
+import SEO from '../components/SEO';
 
 function useFontSize() {
   const [size, setSize] = useState(window.innerWidth < 480 ? 50 : window.innerWidth < 768 ? 65 : 90);
@@ -41,6 +42,11 @@ export default function Home() {
 
   return (
     <div className="page home-page">
+      <SEO
+        title="Andy Zhu — Cambridge CS"
+        description="Andy Zhu — final-year Computer Science student at Cambridge. Notes on cryptography, algorithms, and math; photos; competitive programming."
+        path="/"
+      />
       {!animDone && (
         <DustText text={"Andy\nZhu"} fontSize={fontSize} onAnimationDone={handleAnimDone} />
       )}

@@ -1,4 +1,5 @@
 import CpRatingWidget from '../components/CpRatingWidget';
+import SEO from '../components/SEO';
 
 const cpProfiles = [
   { name: 'Codeforces', url: 'https://codeforces.com/profile/Wizard_of_Orz' },
@@ -15,6 +16,11 @@ const contests = [
 export default function Interests() {
   return (
     <div className="page interests-page">
+      <SEO
+        title="Interests"
+        description="Competitive programming profiles, contests I've authored, bridge, violin, and other things outside work."
+        path="/interests"
+      />
       <h1 className="page-title">Interests</h1>
 
       <section className="interest-section card">

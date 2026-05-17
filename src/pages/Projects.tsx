@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import SEO from '../components/SEO';
 
 const projects: {
   title: string;
@@ -38,6 +39,11 @@ const projects: {
 export default function Projects() {
   return (
     <div className="page projects-page">
+      <SEO
+        title="Projects"
+        description="A selection of projects I've built — side projects, university work, and competitive programming tooling."
+        path="/projects"
+      />
       <h1 className="page-title">Projects</h1>
       <div className="projects-grid">
         {projects.map((project, i) => (
