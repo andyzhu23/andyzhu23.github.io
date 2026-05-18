@@ -66,19 +66,10 @@ export default function Home() {
         <div className={`home-cta ${animDone ? 'visible' : ''}`}>
           <Link to="/about" className="btn btn-primary">About Me</Link>
           <Link to="/experience" className="btn btn-outline">Experience</Link>
-          <a
-            href={`${import.meta.env.BASE_URL}CV_Andy_Zhu.pdf`}
-            download="Andy_Zhu_CV.pdf"
-            className="btn btn-outline"
-          >
-            Download CV ↓
-          </a>
         </div>
         <div className={`home-socials ${animDone ? 'visible' : ''}`}>
           <a href="https://github.com/andyzhu23" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a>
           <a href="https://www.linkedin.com/in/andy-zhu-92409323b" target="_blank" rel="noopener noreferrer" title="LinkedIn">LinkedIn</a>
-          <a href="https://open.spotify.com/user/af656qa2tldyvmid9sbdzh9w2?si=b5521cb5445843bc" target="_blank" rel="noopener noreferrer" title="Spotify">Spotify</a>
-          <a href="https://www.instagram.com/littlenotorzzie" target="_blank" rel="noopener noreferrer" title="Instagram">Instagram</a>
           <a href="mailto:andy.zheyuan.zhu@gmail.com" title="Email">Email</a>
         </div>
       </div>
