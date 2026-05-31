@@ -2,6 +2,14 @@ import type { PhotoPost } from './types';
 
 export const posts2026: PhotoPost[] = [
   {
+    id: 'may-2026-cco-problem',
+    title: 'Beyond Counting',
+    date: 'May 31, 2026',
+    location: '2026 Canadian Computing Olympiad',
+    caption: 'My friend Austin Jiang set this CCO problem and kindly mixed our names into it — "Andy Jiang" and "Austin Zhu". Quietly honoured to live in a problem statement.',
+    photos: ['cco2026-beyond-counting'],
+  },
+  {
     id: 'apr-2026-moonrise',
     title: 'Moonrise',
     date: 'April 30, 2026',
