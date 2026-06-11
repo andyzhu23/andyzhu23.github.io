@@ -4,9 +4,20 @@
   <link href="https://andyzhu23.github.io/blog" />
   <link href="https://andyzhu23.github.io/atom.xml" rel="self" type="application/atom+xml" />
   <id>https://andyzhu23.github.io/</id>
-  <updated>2026-04-27T12:00:00.000Z</updated>
+  <updated>2026-06-11T12:00:00.000Z</updated>
   <author><name>Andy Zhu</name></author>
   <subtitle>Notes on cryptography, algorithms, math, and other things I find interesting.</subtitle>
+  <entry>
+    <title>Three years at Cambridge: what I learned reading the Computer Science Tripos</title>
+    <link href="https://andyzhu23.github.io/blog/cambridge-undergrad" />
+    <id>https://andyzhu23.github.io/blog/cambridge-undergrad</id>
+    <updated>2026-06-11T12:00:00.000Z</updated>
+    <published>2026-06-11T12:00:00.000Z</published>
+    <summary>A reflection on my undergraduate experience reading the Computer Science Tripos at Cambridge.</summary>
+    <category term="cambridge" />
+    <category term="university" />
+    <category term="reflection" />
+  </entry>
   <entry>
     <title>The Discrete Fourier Transform</title>
     <link href="https://andyzhu23.github.io/blog/discrete-fourier-transform" />
