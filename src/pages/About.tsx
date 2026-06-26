@@ -15,7 +15,7 @@ export default function About() {
     <div className="page about-page">
       <SEO
         title="About"
-        description="Final-year Computer Science student at Cambridge (Selwyn College), graduating July 2026. Background, skills, and coursework."
+        description="Computer Science student at Cambridge (Selwyn College), graduating July 2027. Background, skills, and coursework."
         path="/about"
       />
       <h1 className="page-title">About Me</h1>
@@ -26,8 +26,8 @@ export default function About() {
             <div className="about-bio-text">
               <h2>Hello!</h2>
               <p>
-                I'm Andy, a final-year Computer Science student at the University of Cambridge
-                (Selwyn College), graduating in July 2026. Born in Montreal, Canada, I moved to Hangzhou, China
+                I'm Andy, a Computer Science student at the University of Cambridge
+                (Selwyn College), graduating in July 2027. Born in Montreal, Canada, I moved to Hangzhou, China
                 as a kid, then back to Vancouver, Canada before coming to Cambridge for undergrad.
               </p>
               <p>
@@ -44,8 +44,13 @@ export default function About() {
           <h2>Education</h2>
           <div className="education-item">
             <h3>University of Cambridge</h3>
+            <p className="subtitle">M.Eng Computer Science Tripos, Part III</p>
+            <p className="date">2026 - 2027</p>
+          </div>
+          <div className="education-item">
+            <h3>University of Cambridge</h3>
             <p className="subtitle">BA (Hons) Computer Science Tripos</p>
-            <p className="date">Graduating July 2026</p>
+            <p className="date">2023 - 2026</p>
           </div>
           <div className="education-item">
             <h3>St. George's School</h3>
