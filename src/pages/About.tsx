@@ -49,7 +49,7 @@ export default function About() {
           </div>
           <div className="education-item">
             <h3>University of Cambridge</h3>
-            <p className="subtitle">BA (Hons) Computer Science Tripos</p>
+            <p className="subtitle">B.A. (Hons) Computer Science Tripos</p>
             <p className="date">2023 - 2026</p>
           </div>
           <div className="education-item">
