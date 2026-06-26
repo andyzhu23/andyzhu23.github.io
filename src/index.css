@@ -532,6 +532,10 @@ body.intro-done .navbar {
   font-size: 0.95rem;
 }
 
+.about-education .grade {
+  font-size: 0.95rem;
+}
+
 .about-education .date {
   color: var(--accent-green);
   font-size: 0.85rem;
